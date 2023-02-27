@@ -1,0 +1,36 @@
+:root {
+        --accent: #37b24d;
+        --accent-shade: #2f9e44;
+        --accent-tint: #51cf66;
+        --main: #f1f3f5;
+        --main-shade: #e9ecef;
+        --main-tint: #f2f4f6;
+
+        --accent-gradient: linear-gradient(180deg,
+                        var(--accent-tint) 0%,
+                        var(--accent-shade) 100%);
+        --main-gradient: linear-gradient(180deg,
+                        var(--main-tint) 0%,
+                        var(--main-shade) 100%);
+
+        --text-gray: #444;
+
+        --box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+                rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+html {
+        font-family: "Inter", sans-serif;
+        font-size: 62.5%;
+}
+
+.text-gradient {
+        background: var(--accent-gradient);
+        background-clip: inherit;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+}
+
+ul {
+        list-style-type: none;
+}
