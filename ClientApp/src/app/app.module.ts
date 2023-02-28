@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { CustomComponentsModule } from './custom-components/custom-components.module';
 
 @NgModule({
   declarations: [
@@ -24,11 +25,13 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
     FormsModule,
     IonicModule,
     RouterModule.forRoot([
-      { path: 'signin', component: SignInPageComponent },
-      { path: 'signup', component: SignUpPageComponent },
+      { path: 'SignIn', component: SignInPageComponent },
+      { path: 'SignUp', component: SignUpPageComponent },
       { path: '', component: WelcomePageComponent, pathMatch: 'full' },
       { path: '**', redirectTo: '/' },
     ]),
+    CustomComponentsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
