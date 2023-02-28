@@ -11,6 +11,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { CustomComponentsModule } from './custom-components/custom-components.module';
+import ToolBox from './scripts/toolbox.class';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { CustomComponentsModule } from './custom-components/custom-components.mo
     CustomComponentsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ToolBox],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
