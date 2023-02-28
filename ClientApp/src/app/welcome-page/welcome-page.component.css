@@ -12,15 +12,7 @@
     padding: 0 20%;
 }
 
-.uPhotoLogo {
-    font-weight: 700;
-    font-size: 6vh;
-    letter-spacing: -2px;
-    height: fit-content;
-    margin-top: -1vh;
-}
-
-.sectionNav {
+.section-nav {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -28,50 +20,31 @@
     gap: 1.6vw;
 }
 
-.sectionLink {
+.section-link {
     font-size: 3vh;
     font-weight: 500;
-    cursor: pointer;
-    color: var(--accent);
 }
 
-.sectionLink:hover {
-    color: var(--accent-tint)
-}
-
-.buttonsUl {
+.buttons-ul {
     display: flex;
     flex-direction: row;
     gap: 1vw;
 }
 
-.signInButton,
-.signUpButton {
+.signIn-button,
+.signUp-button {
     font-size: 2.6vh;
     font-weight: 500;
     padding: 0.3vh 0.8vw 0.4vh 0.8vw;
     border-radius: 2rem;
     cursor: pointer;
-    text-decoration: none;
 }
 
-.signInButton {
-    color: var(--accent);
+.signIn-button {
     border-width: 2px;
     border-style: solid;
 }
 
-.signInButton:hover {
-    color: var(--accent-tint);
-}
-
-.signUpButton {
-    color: var(--main);
-    background-image: var(--accent-gradient);
+.signUp-button {
     padding: 0.4vh 0.9vw 0.6vh 0.9vw;
-}
-
-.signUpButton:hover {
-    background-image: none;
-    background-color: var(--accent-tint);
 }
