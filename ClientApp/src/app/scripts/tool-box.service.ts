@@ -12,4 +12,16 @@ export default class ToolBox {
   ifStrEmpty(string: string): boolean {
     return string === '';
   }
+
+  strLongerThan(string: string, length: number): boolean {
+    return string.length > length;
+  }
+
+  strContainsNum(string: string) : boolean {
+    return /\d/.test(string);
+  }
+
+  strContainsUppercase(string: string) : boolean {
+    return string !== string.toLowerCase();
+  }
 }
