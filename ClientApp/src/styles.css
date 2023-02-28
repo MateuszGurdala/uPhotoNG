@@ -27,6 +27,13 @@
         --float-box-shadow:
                 rgba(0, 0, 0, 0.19) 0px 10px 20px,
                 rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+        --passive-box-shadow: 
+        rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, 
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        --active-box-shadow: 
+        rgba(50, 50, 93, 0.6) 0px 6px 12px -2px, 
+        rgba(0, 0, 0, 0.7) 0px 3px 7px -3px;
 }
 
 html {
@@ -68,6 +75,13 @@ a {
         outline: none;
 }
 
+
+.u-label {
+        font-size: 2vh;
+        font-weight: 700;
+        color: var(--text-gray);
+}
+
 .u-input {
         width: 100%;
         outline: none;
@@ -82,6 +96,8 @@ a {
 
         margin-bottom: 1.6vh;
 }
+
+
 
 .u-input:focus {
         background-color: var(--accent-transparent-30);
@@ -167,12 +183,12 @@ a {
         }
 }
 
-.custom-toast  {
+.custom-toast {
         width: fit-content;
         height: fit-content;
 }
 
-.custom-toast .toast-container  {
+.custom-toast .toast-container {
         width: fit-content;
         height: fit-content;
 }

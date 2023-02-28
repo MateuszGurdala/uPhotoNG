@@ -20,13 +20,6 @@
     font-size: 6vh;
 }
 
-.label {
-    font-size: 2vh;
-    font-weight: 700;
-    color: var(--text-gray);
-}
-
-
 .requirements-ul {
     border-style: solid;
     border-width: 0 0 0 0.2rem;

@@ -13,13 +13,13 @@
                 <li class="requirement" [ngClass]="{'invalid' : !cond.areSame}">Given passwords must be the same.</li>
                 <li class="requirement">All spaces are automatically removed.</li>
             </ul>
-            <h3 class="label">Login:</h3>
+            <h3 class="u-label">Login:</h3>
             <input name="login" [(ngModel)]="registerData.login" class="u-input" type="text" [ngClass]="{'invalid' : !cond.loginFilled}"/>
-            <h3 class="label">E-mail:</h3>
+            <h3 class="u-label">E-mail:</h3>
             <input name="email" [(ngModel)]="registerData.email" class="u-input" type="email" [ngClass]="{'invalid' : !cond.emailFilled}"/>
-            <h3 class="label">Password:</h3>
+            <h3 class="u-label">Password:</h3>
             <input name="password" [(ngModel)]="registerData.password" class="u-input" type="password" [ngClass]="{'invalid' : !cond.passwordFilled}"/>
-            <h3 class="label">Confirm password:</h3>
+            <h3 class="u-label">Confirm password:</h3>
             <input name="confirmation" [(ngModel)]="registerData.confirmation" class="u-input" type="password" [ngClass]="{'invalid' : !cond.confirmationFilled}"/>
             <div class="button-div">
                 <button *ngIf="!isProcessing" class="submit-button u-background-react" type="submit">Submit</button>
