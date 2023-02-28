@@ -1,1 +1,35 @@
-<p>sign-up-page works!</p>
+<body>
+    <div class="main-div">
+        <form class="container" (ngSubmit)="onSubmit()">
+            <h1 class="header text-gradient">Create account</h1>
+            <ul class="requirements-ul">
+                <li class="requirement">All fields must be filled in.</li>
+                <li class="requirement">Login must be unused.</li>
+                <li class="requirement">Email must be unused.</li>
+                <li class="requirement">Password:</li>
+                <li class="requirement">---------- at least 8 characters long.</li>
+                <li class="requirement">---------- contains number.</li>
+                <li class="requirement">---------- contains uppercase character.</li>
+                <li class="requirement">Given passwords must be the same.</li>
+            </ul>
+            <h3 class="label">Login:</h3>
+            <input name="login" [(ngModel)]="registerData.login" class="u-input" type="text" />
+            <h3 class="label">E-mail:</h3>
+            <input name="email" [(ngModel)]="registerData.email" class="u-input" type="email" />
+            <h3 class="label">Password:</h3>
+            <input name="password" [(ngModel)]="registerData.password" class="u-input" type="password" />
+            <h3 class="label">Confirm password:</h3>
+            <input name="confirmation" [(ngModel)]="registerData.confirmation" class="u-input" type="password" />
+            <div class="button-div">
+                <button *ngIf="!isProcessing" class="submit-button u-background-react" type="submit">Submit</button>
+                <div *ngIf="isProcessing" class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <app-footer></app-footer>
+</body>
