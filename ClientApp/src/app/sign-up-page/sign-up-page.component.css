@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 2vh;
+    padding-top: 1vh;
 }
 
 .submit-button {
@@ -55,4 +55,10 @@
     padding: 0 1.2vw;
     padding-bottom: 0.2vh;
     border-radius: 2.6rem;
+    /* box-shadow: var(--float-box-shadow); */
+}
+
+.invalid {
+    color: red;
+    border-color: red;
 }
