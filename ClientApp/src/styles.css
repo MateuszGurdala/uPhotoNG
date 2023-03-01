@@ -75,36 +75,6 @@ a {
         outline: none;
 }
 
-
-.u-label {
-        font-size: 1.8vh;
-        font-weight: 700;
-        color: var(--text-gray);
-}
-
-.u-input {
-        width: 100%;
-        outline: none;
-        font-size: 2vh;
-        font-weight: 500;
-        background-color: transparent;
-        border-style: solid;
-        border-color: var(--accent);
-        border-width: 0 0 0.2rem 0.2rem;
-        padding: 0 0 0.4rem 0.4rem;
-        color: var(--text-gray);
-
-        margin-bottom: 1vh;
-        margin-top: -0.6vh;
-}
-
-
-
-.u-input:focus {
-        background-color: var(--accent-transparent-30);
-        color: var(--accent)
-}
-
 .u-background-react,
 .u-color-react {
         cursor: pointer;

@@ -13,14 +13,10 @@
                 <li class="requirement" [ngClass]="{'invalid' : !cond.areSame}">Given passwords must be the same.</li>
                 <li class="requirement">All spaces are automatically removed.</li>
             </ul>
-            <h3 class="u-label">Login:</h3>
-            <input name="login" [(ngModel)]="registerData.login" class="u-input" type="text" [ngClass]="{'invalid' : !cond.loginFilled}"/>
-            <h3 class="u-label">E-mail:</h3>
-            <input name="email" [(ngModel)]="registerData.email" class="u-input" type="email" [ngClass]="{'invalid' : !cond.emailFilled}"/>
-            <h3 class="u-label">Password:</h3>
-            <input name="password" [(ngModel)]="registerData.password" class="u-input" type="password" [ngClass]="{'invalid' : !cond.passwordFilled}"/>
-            <h3 class="u-label">Confirm password:</h3>
-            <input name="confirmation" [(ngModel)]="registerData.confirmation" class="u-input" type="password" [ngClass]="{'invalid' : !cond.confirmationFilled}"/>
+            <u-input text="Login" input-size="2vh" label-size="1.8vh" input-type="text" [(value)]="registerData.login" [valid]="cond.loginFilled"></u-input>
+            <u-input text="E-mail" input-size="2vh" label-size="1.8vh" input-type="text" [(value)]="registerData.email" [valid]="cond.emailFilled"></u-input>
+            <u-input text="Password" input-size="2vh" label-size="1.8vh" input-type="password" [(value)]="registerData.password" [valid]="cond.passwordFilled"></u-input>
+            <u-input text="Confirm password" input-size="2vh" label-size="1.8vh" input-type="text" [(value)]="registerData.confirmation" [valid]="cond.confirmationFilled"></u-input>
             <div class="button-div">
                 <button *ngIf="!isProcessing" class="submit-button u-background-react" type="submit">Submit</button>
                 <div *ngIf="isProcessing" class="lds-ring">
@@ -34,3 +30,11 @@
     </div>
     <app-footer></app-footer>
 </body>
+<!-- <h3 class="u-label">Login:</h3> -->
+<!-- <input name="login" [(ngModel)]="registerData.login" class="u-input" type="text" [ngClass]="{'invalid' : !cond.loginFilled}"/> -->
+<!-- <h3 class="u-label">E-mail:</h3>
+<input name="email" [(ngModel)]="registerData.email" class="u-input" type="email" [ngClass]="{'invalid' : !cond.emailFilled}"/> -->
+<!-- <h3 class="u-label">Password:</h3>
+<input name="password" [(ngModel)]="registerData.password" class="u-input" type="password" [ngClass]="{'invalid' : !cond.passwordFilled}"/> -->
+<!-- <h3 class="u-label">Confirm password:</h3>
+<input name="confirmation" [(ngModel)]="registerData.confirmation" class="u-input" type="password" [ngClass]="{'invalid' : !cond.confirmationFilled}"/> -->
