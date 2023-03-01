@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
-import ToolBox from '../scripts/tool-box.service';
+import ToolBox from '../services/tool-box.service';
 
 interface RegisterData {
   login: string;
@@ -45,7 +45,7 @@ export class SignUpPageComponent implements OnInit {
     private toolbox: ToolBox,
     private toastr: ToastrService
   ) {
-    this.titleSrv.setTitle("Sign up");
+    this.titleSrv.setTitle('Sign up');
     this.resetConditions();
   }
 
@@ -70,13 +70,25 @@ export class SignUpPageComponent implements OnInit {
 
   onSubmit() {
     this.resetConditions();
+    this.removeWhiteSpaces();
+    this.checkIfEmpty();
+    this.checkPwdLen();
+    this.checkPwdNum();
+    this.checkPwdUppercase();
+    this.checkPwdEqConf();
 
-    //Removing white spaces
+    //Verify login and email are unused
+    //TODO
+  }
+
+  removeWhiteSpaces() {
     for (const [key, value] of Object.entries(this.registerData)) {
       this.registerData[key as keyof RegisterData] =
         this.toolbox.removeWhiteSpaces(value);
     }
+  }
 
+  checkIfEmpty() {
     //No empty inputs
     for (const [key, value] of Object.entries(this.registerData)) {
       if (this.toolbox.ifStrEmpty(value)) {
@@ -84,11 +96,9 @@ export class SignUpPageComponent implements OnInit {
         this.cond.allFilled = false;
       }
     }
+  }
 
-    //Verify login and email are unused
-    //TODO
-
-    //Password verification
+  checkPwdLen() {
     //Length at least 8
     if (!this.toolbox.strLongerThan(this.registerData.password, 7)) {
       this.cond.passwordValid = false;
@@ -96,7 +106,9 @@ export class SignUpPageComponent implements OnInit {
       this.cond.passwordFilled = false;
       this.cond.confirmationFilled = false;
     }
+  }
 
+  checkPwdNum() {
     //Contains number
     if (!this.toolbox.strContainsNum(this.registerData.password)) {
       this.cond.passwordValid = false;
@@ -104,7 +116,9 @@ export class SignUpPageComponent implements OnInit {
       this.cond.passwordFilled = false;
       this.cond.confirmationFilled = false;
     }
+  }
 
+  checkPwdUppercase() {
     //Contains uppercase
     if (!this.toolbox.strContainsUppercase(this.registerData.password)) {
       this.cond.passwordValid = false;
@@ -112,7 +126,9 @@ export class SignUpPageComponent implements OnInit {
       this.cond.passwordFilled = false;
       this.cond.confirmationFilled = false;
     }
+  }
 
+  checkPwdEqConf() {
     //Passwords are same
     if (!(this.registerData.password === this.registerData.confirmation)) {
       this.cond.passwordValid = false;
