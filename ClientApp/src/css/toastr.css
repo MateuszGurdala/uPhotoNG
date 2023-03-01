@@ -1,0 +1,17 @@
+.custom-toast {
+    width: fit-content;
+    height: fit-content;
+}
+
+.custom-toast .toast-container {
+    width: fit-content;
+    height: fit-content;
+}
+
+.custom-toast .toast-title {
+    font-size: 3vh !important;
+}
+
+.custom-toast .toast-message {
+    font-size: 1.8vh !important;
+}

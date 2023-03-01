@@ -1,0 +1,41 @@
+.uPhoto-logo {
+    font-weight: 700;
+    font-size: 6vh;
+    letter-spacing: -2px;
+    height: 100%;
+    margin-top: -1vh;
+}
+
+.u-background-react,
+.u-color-react {
+        cursor: pointer;
+}
+
+.u-background-react {
+        color: var(--main);
+        background-image: var(--accent-gradient);
+}
+
+.u-background-react:hover {
+        color: var(--main);
+        background-image: none;
+        background-color: var(--accent-tint);
+}
+
+.u-background-react:active {
+        color: var(--main);
+        background-image: none;
+        background-color: var(--accent-shade);
+}
+
+.u-color-react {
+        color: var(--accent);
+}
+
+.u-color-react:hover {
+        color: var(--accent-tint);
+}
+
+.u-color-react:active {
+        color: var(--accent-shade);
+}

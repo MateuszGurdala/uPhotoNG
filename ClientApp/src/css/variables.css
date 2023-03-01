@@ -1,0 +1,37 @@
+:root {
+        --accent: #37b24d;
+        --accent-shade: #2f9e44;
+        --accent-tint: #51cf66;
+        --main: #f1f3f5;
+        --main-shade: #e9ecef;
+        --main-tint: #f2f4f6;
+
+        --accent-transparent-30: rgba(55, 178, 77, 0.3);
+
+        --accent-gradient: linear-gradient(180deg,
+                        var(--accent-tint) 0%,
+                        var(--accent-shade) 100%);
+        --main-gradient: linear-gradient(180deg,
+                        var(--main-tint) 0%,
+                        var(--main-shade) 100%);
+
+        --text-gray: #666;
+
+        /* --box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+
+        --box-shadow:
+                rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+                rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+        --float-box-shadow:
+                rgba(0, 0, 0, 0.19) 0px 10px 20px,
+                rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+        --passive-box-shadow:
+                rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+                rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        --active-box-shadow:
+                rgba(50, 50, 93, 0.6) 0px 6px 12px -2px,
+                rgba(0, 0, 0, 0.7) 0px 3px 7px -3px;
+}

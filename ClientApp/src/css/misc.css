@@ -1,0 +1,11 @@
+.invalid {
+    color: red;
+    border-color: red;
+}
+
+.text-gradient {
+    background: var(--accent-gradient);
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
