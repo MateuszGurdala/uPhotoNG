@@ -20,9 +20,6 @@ input {
     border-width: 0 0 0.2rem 0.2rem;
     padding: 0 0 0.4rem 0.4rem;
     color: var(--text-gray);
-
-    margin-bottom: 1vh;
-    margin-top: -0.6vh;
 }
 
 input:focus {
