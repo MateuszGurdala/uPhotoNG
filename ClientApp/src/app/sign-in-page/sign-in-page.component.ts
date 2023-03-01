@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-in-page.component.css'],
 })
 export class SignInPageComponent implements OnInit {
-  constructor() {}
+  constructor(private titleSrv: Title) {
+    this.titleSrv.setTitle("Sign in");
+  }
 
   ngOnInit(): void {}
 }

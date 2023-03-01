@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import ToolBox from '../scripts/tool-box.service';
 
@@ -39,7 +40,12 @@ export class SignUpPageComponent implements OnInit {
   cond: Conditions = {} as Conditions;
   isProcessing: boolean = false;
 
-  constructor(private toolbox: ToolBox, private toastr: ToastrService) {
+  constructor(
+    private titleSrv: Title,
+    private toolbox: ToolBox,
+    private toastr: ToastrService
+  ) {
+    this.titleSrv.setTitle("Sign up");
     this.resetConditions();
   }
 
