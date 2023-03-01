@@ -48,3 +48,40 @@
 .signUp-button {
     padding: 0.4vh 0.9vw 0.6vh 0.9vw;
 }
+
+
+.about-section {
+    width: 100vw;
+    height: 93vh;
+    margin-top: 7vh;
+    padding: 4% 12%;
+
+    display: grid;
+    grid-template-columns: 45% 55%;
+}
+
+.about-info {
+    padding: 4%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+}
+
+.about-header {
+    font-weight: 700;
+    font-size: 8vh;
+    letter-spacing: -2px;
+    line-height: 9vh;
+}
+
+.about-p {
+    font-size: 3vh;
+    letter-spacing: -1px;
+    font-weight: 400;
+    color: var(--text-gray);
+    line-height: 3.6vh;
+}
+
+.about-img {
+}

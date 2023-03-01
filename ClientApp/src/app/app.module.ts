@@ -9,7 +9,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { CustomComponentsModule } from './custom-components/custom-components.module';
-import ToolBox from './scripts/tool-box.service';
+import ToolBox from './services/tool-box.service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule } from '@ionic/angular';

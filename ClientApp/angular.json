@@ -29,6 +29,7 @@
             "assets": [
               "src/assets",
               "src/assets/favicon.ico",
+              "src/assets/images/hero.png",
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
