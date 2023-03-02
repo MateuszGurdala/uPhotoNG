@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uPhotoNG", "uPhotoNG.csproj", "{52712760-558F-4EB9-B5F9-1CEC5EFB3830}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uPhotoNG", "uPhotoNG.csproj", "{52712760-558F-4EB9-B5F9-1CEC5EFB3830}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uPhotoNG.Models", "..\uPhotoNG.Models\uPhotoNG.Models.csproj", "{B9D45045-0E81-4E88-B3AE-5B1179C267C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uPhotoNG.Database", "..\uPhotoNG.Database\uPhotoNG.Database.csproj", "{01839C0B-0B9D-4BF0-BF5E-62F7AB38293A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{52712760-558F-4EB9-B5F9-1CEC5EFB3830}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52712760-558F-4EB9-B5F9-1CEC5EFB3830}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52712760-558F-4EB9-B5F9-1CEC5EFB3830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D45045-0E81-4E88-B3AE-5B1179C267C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D45045-0E81-4E88-B3AE-5B1179C267C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D45045-0E81-4E88-B3AE-5B1179C267C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D45045-0E81-4E88-B3AE-5B1179C267C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01839C0B-0B9D-4BF0-BF5E-62F7AB38293A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01839C0B-0B9D-4BF0-BF5E-62F7AB38293A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01839C0B-0B9D-4BF0-BF5E-62F7AB38293A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01839C0B-0B9D-4BF0-BF5E-62F7AB38293A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

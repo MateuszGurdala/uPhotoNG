@@ -1,8 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using uPhotoNG.Database;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllersWithViews();
+
+//Database
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//UnitOfWork
+builder.Services.AddScoped<UnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
