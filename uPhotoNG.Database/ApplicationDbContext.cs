@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using uPhotoNG.Models;
 
 namespace uPhotoNG.Database
 {
     public class ApplicationDbContext : DbContext
     {
+        private DbSet<User> Users { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }

@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace uPhotoNG.Database
 {
-    internal class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> where TEntity : class
     {
         internal ApplicationDbContext context;
         internal DbSet<TEntity> dbSet;
