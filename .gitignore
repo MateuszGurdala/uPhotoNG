@@ -275,3 +275,4 @@ Thumbs.db
 
 uPhotoNG/node_modules
 uPhotoNG/ClientApp/.angular
+/uPhotoNG/appsettings.Development.json
