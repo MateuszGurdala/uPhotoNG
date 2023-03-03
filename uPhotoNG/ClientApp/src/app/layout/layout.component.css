@@ -1,0 +1,20 @@
+.header-icon {
+    margin-left: auto;
+    font-size: 6vh;
+}
+
+.body-div {
+    margin-top: 7vh;
+    height: 93vh;
+    padding: 1% 15%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.x {
+    background-color: red;
+}
+
+.y {
+    background-color: blue;
+}
