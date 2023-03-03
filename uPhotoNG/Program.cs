@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using uPhotoNG.Database;
 
@@ -13,6 +14,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //UnitOfWork
 builder.Services.AddScoped<UnitOfWork, UnitOfWork>();
 
+//HTTPCookieIdentity
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.SlidingExpiration = true;
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +34,15 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+//HTTPCookieIdentity
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseCookiePolicy(new CookiePolicyOptions()
+{
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+    Secure = CookieSecurePolicy.Always
+});
 
 
 app.MapControllerRoute(
