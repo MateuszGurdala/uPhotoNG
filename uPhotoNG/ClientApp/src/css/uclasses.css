@@ -1,9 +1,8 @@
 .uPhoto-logo {
-    font-weight: 700;
-    font-size: 6vh;
-    letter-spacing: -2px;
-    height: 100%;
-    margin-top: -1vh;
+        font-weight: 700;
+        font-size: 6vh;
+        letter-spacing: -2px;
+        margin: 0;
 }
 
 .u-background-react,
