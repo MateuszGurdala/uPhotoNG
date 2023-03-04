@@ -1,7 +1,7 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ChangeDetectorRef, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppPagesModule } from './app-pages/app-pages.module';
+import { AccountHttpClientService } from './services/account-http-client.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { AppPagesModule } from './app-pages/app-pages.module';
     SignUpPageComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
@@ -31,7 +34,7 @@ import { AppPagesModule } from './app-pages/app-pages.module';
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       closeButton: false,
-      newestOnTop: true,
+      newestOnTop: true,  
       progressBar: false,
       positionClass: 'toast-top-center',
       preventDuplicates: true,
@@ -41,9 +44,10 @@ import { AppPagesModule } from './app-pages/app-pages.module';
     }),
     IonicModule.forRoot(),
     AppRoutingModule,
-    AppPagesModule
+    AppPagesModule,
+    HttpClientModule,
   ],
-  providers: [ToolBox, Title],
+  providers: [ToolBox, Title, HttpClient, AccountHttpClientService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
