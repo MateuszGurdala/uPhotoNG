@@ -12,9 +12,8 @@ import ToolBox from './services/tool-box.service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule } from '@ionic/angular';
-import { LayoutComponent } from './layout/layout.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppPagesModule } from './app-pages/app-pages.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,6 @@ import { AppRoutingModule } from './app-routing.module';
     WelcomePageComponent,
     SignInPageComponent,
     SignUpPageComponent,
-    LayoutComponent,
-    HomePageComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,6 +41,7 @@ import { AppRoutingModule } from './app-routing.module';
     }),
     IonicModule.forRoot(),
     AppRoutingModule,
+    AppPagesModule
   ],
   providers: [ToolBox, Title],
   bootstrap: [AppComponent],

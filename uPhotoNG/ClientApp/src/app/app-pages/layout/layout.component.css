@@ -1,6 +1,11 @@
 .header-icon {
-    margin-left: auto;
     font-size: 6vh;
+    margin-left: 1vw;
+}
+
+.header-icon:nth-child(2) {
+    margin-left: auto;
+    font-size: 5vh;
 }
 
 .body-div {
@@ -11,10 +16,8 @@
     grid-template-columns: 20% 80%;
 }
 
-.x {
-    background-color: red;
-}
 
 .y {
-    background-color: blue;
+    border-style: solid;
+    border-color: blue;
 }
