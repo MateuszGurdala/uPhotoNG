@@ -6,14 +6,14 @@ namespace uPhotoNG.Controllers
 {
     public class CustomControllerBase : Controller
     {
-        private UnitOfWork _unitOfWork;
+        internal UnitOfWork _unitOfWork;
 
         public CustomControllerBase(UnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public dynamic GetRequestBody()
+        internal dynamic GetRequestBody()
         {
             StreamReader reader = new StreamReader(Request.Body);
             var text = reader.ReadToEndAsync().Result;
