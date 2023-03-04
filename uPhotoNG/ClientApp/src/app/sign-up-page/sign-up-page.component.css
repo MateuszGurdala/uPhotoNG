@@ -50,3 +50,8 @@
     padding-bottom: 1vh;
     /* box-shadow: var(--float-box-shadow); */
 }
+
+.invalid {
+    color: red;
+    border-color: red;
+}
