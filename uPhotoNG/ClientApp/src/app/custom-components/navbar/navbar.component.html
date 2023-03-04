@@ -1,0 +1,32 @@
+<div class="navbar-container">
+    <ul class="custom-navbar" [ngClass]="{'navbar-extended': isExtended}">
+        <li><ion-icon name="reorder-four-outline" class="navbar-icon u-color-react" (click)="extend()"></ion-icon></li>
+        <li>
+            <div class="icon-break"></div>
+        </li>
+        <li><a class="navbar-route u-color-react" routerLink="/App/Homepage">
+                <ion-icon name="home-outline" class="navbar-icon"></ion-icon>
+                <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Homepage</h3>
+            </a></li>
+        <li><a class="navbar-route u-color-react">
+            <ion-icon name="images-outline" class="navbar-icon"></ion-icon>
+            <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Photos</h3>
+        </a></li>
+        <li><a class="navbar-route u-color-react">
+            <ion-icon name="folder-outline" class="navbar-icon"></ion-icon>
+            <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Albums</h3>
+        </a></li>
+        <li><a class="navbar-route u-color-react">
+            <ion-icon name="cloud-outline" class="navbar-icon"></ion-icon>
+            <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Shared</h3>
+        </a></li>
+        <li><a class="navbar-route u-color-react">
+            <ion-icon name="earth-outline" class="navbar-icon"></ion-icon>
+            <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Map</h3>
+        </a></li>
+        <li><a class="navbar-route u-color-react">
+            <ion-icon name="apps-outline" class="navbar-icon"></ion-icon>
+            <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">All apps</h3>
+        </a></li>
+    </ul>
+</div>
