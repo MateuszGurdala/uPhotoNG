@@ -29,6 +29,12 @@ export class SignUpPageComponent implements OnInit {
     private httpClient: AccountHttpClientService,
     private router: Router
   ) {
+    this.httpClient.ValidateAuthentication().subscribe(next => {
+      if(next)
+      {
+        this.router.navigate(['/App/Homepage']);
+      }
+    });
     this.titleSrv.setTitle('Sign up');
     this.resetConditions();
   }
