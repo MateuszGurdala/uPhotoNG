@@ -91,12 +91,13 @@ namespace uPhotoNG.Controllers
         [HttpGet]
         public async Task<IActionResult> SignIn(string login, string password)
         {
-            if (login == null | password == null)
+            if (login == null || password == null)
             {
                 return StatusCode(400);
             }
 
             var userAccount = _unitOfWork.UserRepository.GetSingle(e => e.Login == login && e.Password == SHA256.HashData(Encoding.ASCII.GetBytes(password)));
+
             if (userAccount == null)
             {
                 return Json(false);
@@ -135,6 +136,20 @@ namespace uPhotoNG.Controllers
             catch (Exception)
             {
                 return StatusCode(400);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ValidateAuthentication()
+        {
+            try
+            {
+                await CheckIfAuthenticated();
+                return Json(true);
+            }
+            catch (Exception)
+            {
+                return Json(false);
             }
         }
     }

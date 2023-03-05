@@ -62,14 +62,25 @@ export class AccountHttpClientService {
     return subject.asObservable();
   }
 
-  signOut()
-  {
+  signOut() {
     var subject = new Subject<boolean>();
     this.httpClient
       .get<boolean>(this.baseURL + 'Account/SignOut', {
         withCredentials: true,
       })
       .pipe(catchError(() => of(false)))
+      .subscribe((next) => {
+        subject.next(next);
+      });
+    return subject.asObservable();
+  }
+
+  ValidateAuthentication(): Observable<boolean> {
+    var subject = new Subject<boolean>();
+    this.httpClient
+      .get<boolean>(this.baseURL + 'Account/ValidateAuthentication', {
+        withCredentials: true,
+      })
       .subscribe((next) => {
         subject.next(next);
       });
