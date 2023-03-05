@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { firstValueFrom } from 'rxjs';
 import { AccountHttpClientService } from '../services/account-http-client.service';
 import { Conditions, RegisterData } from '../services/interfaces';
 import ToolBox from '../services/tool-box.service';
@@ -26,8 +27,7 @@ export class SignUpPageComponent implements OnInit {
     private toolbox: ToolBox,
     private toastr: ToastrService,
     private httpClient: AccountHttpClientService,
-    private router: Router,
-    private detector: ChangeDetectorRef
+    private router: Router
   ) {
     this.titleSrv.setTitle('Sign up');
     this.resetConditions();
@@ -36,42 +36,36 @@ export class SignUpPageComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.isProcessing = !this.isProcessing;
+    this.isProcessing = true;
+    console.log('Processing request...');
 
-    this.validateData();
+    this.validateData().then(() => {
+      console.log(this.cond);
+      if (Object.values(this.cond).includes(false)) {
+        this.toastr.error('Please enter correct values');
+        this.isProcessing = false;
+      } else {
+        this.toastr.success(
+          'Your request is currently being processed',
+          'Success!'
+        );
 
-    if (Object.values(this.cond).includes(false)) {
-
-      this.toastr.error('Please enter correct values');
-      this.isProcessing = !this.isProcessing;
-      
-    } else {
-
-      this.toastr.success(
-        'Your request is currently being processed',
-        'Success!'
-      );
-
-      this.httpClient
-        .createUserAccount(this.registerData)
-        .subscribe(async (next) => {
-          if (!next) {
-
-            this.toastr.error(
-              'Internal server error. Please try again another time.'
-            );
-            this.isProcessing = !this.isProcessing;
-
-          } else {
-
-            this.isProcessing = !this.isProcessing;
-            this.router.navigate(['/SignIn']);
-
-          }
-        });
-    }
+        this.httpClient
+          .createUserAccount(this.registerData)
+          .subscribe(async (next) => {
+            this.isProcessing = false;
+            if (!next) {
+              this.toastr.error(
+                'Internal server error. Please try again another time.'
+              );
+            } else {
+              this.router.navigate(['/SignIn']);
+            }
+          });
+      }
+    });
   }
-  validateData() {
+  async validateData() {
     this.checkPwdUppercase();
     this.resetConditions();
     this.removeWhiteSpaces();
@@ -80,7 +74,7 @@ export class SignUpPageComponent implements OnInit {
     this.checkPwdNum();
     this.checkPwdUppercase();
     this.checkPwdEqConf();
-    this.checkLoginEmailAvailable();
+    await this.checkLoginEmailAvailable();
   }
   removeWhiteSpaces() {
     for (const [key, value] of Object.entries(this.registerData)) {
@@ -133,18 +127,12 @@ export class SignUpPageComponent implements OnInit {
       this.cond.confirmationFilled = false;
     }
   }
-  checkLoginEmailAvailable() {
-    this.httpClient
-      .checkLoginAvailable(this.registerData.login)
-      .subscribe((next) => {
-        this.cond.loginValid = next;
-      });
-
-    this.httpClient
-      .checkEmailAvailable(this.registerData.email)
-      .subscribe((next) => {
-        this.cond.emailValid = next;
-      });
+  async checkLoginEmailAvailable() {
+    let loginObs = this.httpClient.checkLoginAvailable(this.registerData.login);
+    let emailObs = this.httpClient.checkEmailAvailable(this.registerData.email);
+    this.cond.loginValid = await firstValueFrom(loginObs, {defaultValue: false});
+    this.cond.emailValid = await firstValueFrom(emailObs, {defaultValue: false});
+    await new Promise(r => setTimeout(r, 500)); //Necessary
   }
   resetConditions() {
     this.cond = {

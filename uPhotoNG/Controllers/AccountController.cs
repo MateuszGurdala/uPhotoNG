@@ -62,8 +62,8 @@ namespace uPhotoNG.Controllers
             try
             {
                 var user = new User(login, hash, email);
-                //_unitOfWork.UserRepository.Insert(user);
-                //_unitOfWork.Save();
+                _unitOfWork.UserRepository.Insert(user);
+                _unitOfWork.Save();
 
                 HttpContext.Response.StatusCode = 200;
                 return Json(true);
