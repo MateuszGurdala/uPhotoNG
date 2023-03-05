@@ -1,5 +1,5 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { ChangeDetectorRef, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -31,7 +31,6 @@ import { CustomDirectivesModule } from './custom-directives/custom-directives.mo
     HttpClientModule,
     FormsModule,
     CustomComponentsModule,
-    FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       closeButton: false,
@@ -46,7 +45,6 @@ import { CustomDirectivesModule } from './custom-directives/custom-directives.mo
     IonicModule.forRoot(),
     AppRoutingModule,
     AppPagesModule,
-    HttpClientModule,
     CustomDirectivesModule
   ],
   providers: [ToolBox, Title, HttpClient, AccountHttpClientService],
