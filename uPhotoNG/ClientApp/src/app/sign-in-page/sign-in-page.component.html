@@ -1,29 +1,35 @@
 <body>
     <div class="main-div">
-        <div class="account-div uphoto-div">
+        <form class="account-div uphoto-div" (ngSubmit)="onSubmit()">
             <h1 class="text-gradient header">Sign in using uPhoto account</h1>
             <div>
-                <u-input text="Login" input-size="2.2vh" label-size="2vh" input-type="text"></u-input>
-                <u-input text="Password" input-size="2.2vh" label-size="2vh" input-type="password"></u-input>
+                <u-input text="Login" input-size="2.2vh" label-size="2vh" input-type="text" [(value)]="login" [valid]="!loginEmpty"></u-input>
+                <u-input text="Password" input-size="2.2vh" label-size="2vh" input-type="password" [(value)]="password" [valid]="!passwordEmpty"></u-input>
             </div>
             <div class="button-div">
-                <button class="u-background-react submit-button">Sign In</button>
+                <button *ngIf="!isProcessing" class="u-background-react submit-button" type="submit">Sign In</button>
+                <div *ngIf="isProcessing" class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
-        </div>
+        </form>
         <div class="account-div existing-div">
             <h1 class="text-gradient header">Use existing account</h1>
             <!-- Facebook -->
-            <div class="other-account-container  facebook">
+            <div class="other-account-container  facebook" (click)="otherSignIn()">
                 <ion-icon name="logo-facebook" class="account-icon"></ion-icon>
                 <h2 class="account-label">Facebook</h2>
             </div>
             <!-- Instagram -->
-            <div class="other-account-container instagram">
+            <div class="other-account-container instagram" (click)="otherSignIn()">
                 <ion-icon name="logo-instagram" class="account-icon"></ion-icon>
                 <h2 class="account-label">Instagram</h2>
             </div>
             <!-- Google -->
-            <div class="other-account-container">
+            <div class="other-account-container" (click)="otherSignIn()">
                 <ion-icon name="logo-google" class="account-icon google-icon"></ion-icon>
                 <p class="account-label google">
                     <span style='color: #4285F4'>G</span>

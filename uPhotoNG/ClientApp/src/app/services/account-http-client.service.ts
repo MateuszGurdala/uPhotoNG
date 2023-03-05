@@ -1,6 +1,11 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+  HttpResponse,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, Subject } from 'rxjs';
+import { catchError, firstValueFrom, Observable, of, Subject } from 'rxjs';
 import { RegisterData } from './interfaces';
 
 @Injectable({
@@ -43,7 +48,20 @@ export class AccountHttpClientService {
       .put<boolean>(this.baseURL + 'Account/CreateAccount', userData)
       .pipe(catchError(() => of(false)))
       .subscribe((next) => {
-        console.log(next);
+        subject.next(next);
+      });
+    return subject.asObservable();
+  }
+
+  signIn(login: string, password: string): Observable<boolean> {
+    var subject = new Subject<boolean>();
+    this.httpClient
+      .get<boolean>(this.baseURL + 'Account/SignIn', {
+        params: new HttpParams().set('login', login).set('password', password),
+        withCredentials: true
+      })
+      .pipe(catchError(() => of(false)))
+      .subscribe((next) => {
         subject.next(next);
       });
     return subject.asObservable();

@@ -19,7 +19,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.SlidingExpiration = true;
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+        //options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
     });
 
 //CORS
@@ -28,7 +28,8 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
         policy =>
         {
-            policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+            //policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+            policy.WithOrigins("https://localhost:44493").AllowAnyMethod().AllowCredentials();
         });
 });
 

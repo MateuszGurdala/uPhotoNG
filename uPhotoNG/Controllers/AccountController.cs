@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using uPhotoNG.Database;
@@ -8,7 +11,18 @@ namespace uPhotoNG.Controllers
 {
     public class AccountController : CustomControllerBase
     {
-        public AccountController(UnitOfWork unitOfWork) : base(unitOfWork) { }
+        private AuthenticationProperties _authProperties;
+
+        public AccountController(UnitOfWork unitOfWork) : base(unitOfWork)
+        {
+            _authProperties = new AuthenticationProperties()
+            {
+                AllowRefresh = true,
+                IssuedUtc = DateTime.UtcNow,
+                ExpiresUtc = DateTime.UtcNow.AddMinutes(10),
+                IsPersistent = false
+            };
+        }
 
         [HttpGet]
         public IActionResult CheckLoginAvailable(string login)
@@ -72,6 +86,38 @@ namespace uPhotoNG.Controllers
             {
                 return StatusCode(500);
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SignIn(string login, string password)
+        {
+            if (login == null | password == null)
+            {
+                return StatusCode(400);
+            }
+
+            var userAccount = _unitOfWork.UserRepository.GetSingle(e => e.Login == login && e.Password == SHA256.HashData(Encoding.ASCII.GetBytes(password)));
+            if (userAccount == null)
+            {
+                return Json(false);
+            }
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Role, "User"),
+                new Claim(ClaimTypes.Email, userAccount.Email)
+            };
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var authProperties = _authProperties.Clone();
+            authProperties.Items.Add("Id", userAccount.Id.ToString());
+
+            await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authProperties);
+
+            return Json(true);
         }
     }
 }
