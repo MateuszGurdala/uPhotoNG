@@ -27,7 +27,7 @@ export class SignInPageComponent implements OnInit {
     private httpClient: AccountHttpClientService,
     private router: Router
   ) {
-    this.httpClient.ValidateAuthentication().subscribe(next => {
+    this.httpClient.validateAuthentication().subscribe(next => {
       if(next)
       {
         this.router.navigate(['/App/Homepage']);

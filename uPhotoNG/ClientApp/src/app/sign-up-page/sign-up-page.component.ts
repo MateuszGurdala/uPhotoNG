@@ -29,9 +29,8 @@ export class SignUpPageComponent implements OnInit {
     private httpClient: AccountHttpClientService,
     private router: Router
   ) {
-    this.httpClient.ValidateAuthentication().subscribe(next => {
-      if(next)
-      {
+    this.httpClient.validateAuthentication().subscribe((next) => {
+      if (next) {
         this.router.navigate(['/App/Homepage']);
       }
     });
@@ -136,9 +135,13 @@ export class SignUpPageComponent implements OnInit {
   async checkLoginEmailAvailable() {
     let loginObs = this.httpClient.checkLoginAvailable(this.registerData.login);
     let emailObs = this.httpClient.checkEmailAvailable(this.registerData.email);
-    this.cond.loginValid = await firstValueFrom(loginObs, {defaultValue: false});
-    this.cond.emailValid = await firstValueFrom(emailObs, {defaultValue: false});
-    await new Promise(r => setTimeout(r, 500)); //Necessary
+    this.cond.loginValid = await firstValueFrom(loginObs, {
+      defaultValue: false,
+    });
+    this.cond.emailValid = await firstValueFrom(emailObs, {
+      defaultValue: false,
+    });
+    await new Promise((r) => setTimeout(r, 500)); //Necessary
   }
   resetConditions() {
     this.cond = {

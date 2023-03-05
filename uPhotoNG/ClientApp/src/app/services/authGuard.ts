@@ -16,7 +16,7 @@ export const authGuard: CanActivateFn = async (
   let router = inject<Router>(Router);
 
   let isAuthenticated = await firstValueFrom(
-    httpClient.ValidateAuthentication()
+    httpClient.validateAuthentication()
   );
 
   if (isAuthenticated) {
