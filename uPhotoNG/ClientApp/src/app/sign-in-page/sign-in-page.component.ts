@@ -52,7 +52,7 @@ export class SignInPageComponent implements OnInit {
         this.loginEmpty = true;
         this.passwordEmpty = true;
       } else {
-        this.toastr.success('Logging in', 'Success!');
+        this.toastr.success('Successfully signed in', 'Success!');
         this.router.navigate(['/App/Homepage']);
       }
     }
