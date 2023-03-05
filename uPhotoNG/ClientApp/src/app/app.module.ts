@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppPagesModule } from './app-pages/app-pages.module';
 import { AccountHttpClientService } from './services/account-http-client.service';
 import { CommonModule } from '@angular/common';
+import { CustomDirectivesModule } from './custom-directives/custom-directives.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     AppPagesModule,
     HttpClientModule,
+    CustomDirectivesModule
   ],
   providers: [ToolBox, Title, HttpClient, AccountHttpClientService],
   bootstrap: [AppComponent],

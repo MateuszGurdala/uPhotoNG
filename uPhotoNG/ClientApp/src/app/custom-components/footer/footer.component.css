@@ -29,11 +29,3 @@
     font-size: 2.6vh;
     gap: 1.6vw;
 }
-
-.links-ul a {
-    color: var(--accent);
-}
-
-.links-ul a:hover {
-    color: var(--accent-tint);
-}
