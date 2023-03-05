@@ -119,5 +119,23 @@ namespace uPhotoNG.Controllers
 
             return Json(true);
         }
+
+        [HttpGet]
+#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
+        public async Task<IActionResult> SignOut()
+#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
+        {
+            try
+            {
+                await CheckIfAuthenticated();
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                return Json(true);
+            }
+            catch (Exception)
+            {
+                return StatusCode(400);
+            }
+        }
     }
 }

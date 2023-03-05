@@ -5,6 +5,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CustomComponentsModule } from '../custom-components/custom-components.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { IonicModule } from '@ionic/angular';
+import { AccountHttpClientService } from '../services/account-http-client.service';
 
 
 
@@ -14,8 +15,9 @@ import { IonicModule } from '@ionic/angular';
     CommonModule,
     CustomComponentsModule,
     AppRoutingModule,
-    IonicModule
+    IonicModule,
   ],
-  exports: [LayoutComponent, HomePageComponent]
+  exports: [LayoutComponent, HomePageComponent],
+  providers: [AccountHttpClientService]
 })
 export class AppPagesModule { }

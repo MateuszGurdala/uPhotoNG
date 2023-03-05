@@ -1,11 +1,6 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpParams,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, firstValueFrom, Observable, of, Subject } from 'rxjs';
+import { catchError, Observable, of, Subject } from 'rxjs';
 import { RegisterData } from './interfaces';
 
 @Injectable({
@@ -58,7 +53,21 @@ export class AccountHttpClientService {
     this.httpClient
       .get<boolean>(this.baseURL + 'Account/SignIn', {
         params: new HttpParams().set('login', login).set('password', password),
-        withCredentials: true
+        withCredentials: true,
+      })
+      .pipe(catchError(() => of(false)))
+      .subscribe((next) => {
+        subject.next(next);
+      });
+    return subject.asObservable();
+  }
+
+  signOut()
+  {
+    var subject = new Subject<boolean>();
+    this.httpClient
+      .get<boolean>(this.baseURL + 'Account/SignOut', {
+        withCredentials: true,
       })
       .pipe(catchError(() => of(false)))
       .subscribe((next) => {
