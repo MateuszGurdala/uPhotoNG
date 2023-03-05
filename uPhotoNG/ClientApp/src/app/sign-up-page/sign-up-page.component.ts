@@ -52,7 +52,7 @@ export class SignUpPageComponent implements OnInit {
 
         this.httpClient
           .createUserAccount(this.registerData)
-          .subscribe(async (next) => {
+          .subscribe((next) => {
             this.isProcessing = false;
             if (!next) {
               this.toastr.error(

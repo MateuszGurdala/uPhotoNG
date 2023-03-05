@@ -1,7 +1,6 @@
 <body>
     <div class="main-div">
         <form class="container" (ngSubmit)="onSubmit()">
-        <!-- <form class="container"> -->
             <h1 class="header text-gradient">Create account</h1>
             <ul class="requirements-ul">
                 <li class="requirement" [ngClass]="{'invalid' : !cond.allFilled}">All fields must be filled in.</li>
