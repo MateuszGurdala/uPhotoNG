@@ -17,6 +17,8 @@ namespace uPhotoNG.Database
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>(e => e.HasIndex(e => e.Login).IsUnique());
+            modelBuilder.Entity<User>(e => e.HasIndex(e => e.Email).IsUnique());
             base.OnModelCreating(modelBuilder);
         }
     }
