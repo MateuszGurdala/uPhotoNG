@@ -7,10 +7,11 @@ import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IonicModule } from '@ionic/angular';
 import { CustomDirectivesModule } from '../custom-directives/custom-directives.module';
+import { AppModalComponent } from './app-modal/app-modal.component';
 
 @NgModule({
-  declarations: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent],
+  declarations: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent],
   imports: [CommonModule, RouterModule, IonicModule.forRoot(), CustomDirectivesModule],
-  exports: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent],
+  exports: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent],
 })
 export class CustomComponentsModule {}

@@ -38,3 +38,12 @@
 .u-color-react:active {
         color: var(--accent-shade);
 }
+
+.u-shadow-react {
+        box-shadow: var(--passive-box-shadow);
+        transition: box-shadow 0.4s;
+}
+
+.u-shadow-react:hover {
+        box-shadow: var(--active-box-shadow);
+}

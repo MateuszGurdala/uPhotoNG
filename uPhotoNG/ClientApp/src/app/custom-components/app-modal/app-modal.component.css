@@ -1,0 +1,14 @@
+.modal-container {
+    position: absolute;
+
+    width: 50vw;
+    height: 20vh;
+    border-radius: 2vh 2vh 0 0;
+
+    top: 80vh;
+    left: 25vw;
+    z-index: 100;
+
+    background-image: var(--main-gradient);
+    box-shadow: var(--box-shadow);
+}

@@ -10,6 +10,7 @@ import { AppsPageComponent } from './apps-page/apps-page.component';
 import { PhotosPageComponent } from './photos-page/photos-page.component';
 import { AlbumsPageComponent } from './albums-page/albums-page.component';
 import { PlacesPageComponent } from './places-page/places-page.component';
+import { CustomDirectivesModule } from '../custom-directives/custom-directives.module';
 
 
 
@@ -20,6 +21,7 @@ import { PlacesPageComponent } from './places-page/places-page.component';
     CustomComponentsModule,
     AppRoutingModule,
     IonicModule,
+    CustomDirectivesModule
   ],
   exports: [LayoutComponent, HomePageComponent, AppsPageComponent, PhotosPageComponent, AlbumsPageComponent, PlacesPageComponent],
   providers: [AccountHttpClientService]
