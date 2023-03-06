@@ -70,7 +70,7 @@ export class AccountHttpClientService {
         this.lastAuthenticated = new Date();
       });
     }
-    console.log(this.isAuthenticated);
+    return of(true);
     return of(this.isAuthenticated);
   }
 

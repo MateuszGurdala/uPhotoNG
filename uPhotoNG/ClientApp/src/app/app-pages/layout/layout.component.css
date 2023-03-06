@@ -11,13 +11,7 @@
 .body-div {
     margin-top: 7vh;
     height: 93vh;
-    padding: 1% 15%;
+    padding: 2% 15%;
     display: grid;
-    grid-template-columns: 20% 80%;
-}
-
-
-.y {
-    border-style: solid;
-    border-color: blue;
+    grid-template-columns: 10% 90%;
 }

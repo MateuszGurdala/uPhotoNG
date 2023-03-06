@@ -6,18 +6,22 @@ import { CustomComponentsModule } from '../custom-components/custom-components.m
 import { AppRoutingModule } from '../app-routing.module';
 import { IonicModule } from '@ionic/angular';
 import { AccountHttpClientService } from '../services/account-http-client.service';
+import { AppsPageComponent } from './apps-page/apps-page.component';
+import { PhotosPageComponent } from './photos-page/photos-page.component';
+import { AlbumsPageComponent } from './albums-page/albums-page.component';
+import { PlacesPageComponent } from './places-page/places-page.component';
 
 
 
 @NgModule({
-  declarations: [LayoutComponent, HomePageComponent],
+  declarations: [LayoutComponent, HomePageComponent, AppsPageComponent, PhotosPageComponent, AlbumsPageComponent, PlacesPageComponent],
   imports: [
     CommonModule,
     CustomComponentsModule,
     AppRoutingModule,
     IonicModule,
   ],
-  exports: [LayoutComponent, HomePageComponent],
+  exports: [LayoutComponent, HomePageComponent, AppsPageComponent, PhotosPageComponent, AlbumsPageComponent, PlacesPageComponent],
   providers: [AccountHttpClientService]
 })
 export class AppPagesModule { }
