@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Host, HostListener, Input, OnInit } from '@angular/core';
+import { AppModalComponent } from '../app-modal/app-modal.component';
 
 @Component({
   selector: 'app-ref',
@@ -10,7 +11,13 @@ export class AppRefComponent implements OnInit {
   @Input('wrap') wrapText: boolean = false;
   @Input('routerLink') link: string;
   @Input('icon') icon: string;
-  constructor() {}
+
+  @HostListener('click', [])
+  onClick() {
+    this.parent.isExtended = false;
+  }
+
+  constructor(@Host() private parent: AppModalComponent) {}
 
   ngOnInit(): void {}
 }

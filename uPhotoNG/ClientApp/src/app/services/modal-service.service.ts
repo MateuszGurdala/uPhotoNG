@@ -12,6 +12,5 @@ export default class ModalService {
 
   showModal() {
     this.modal.isExtended = !this.modal.isExtended;
-    console.log(this.modal.isExtended);
   }
 }
