@@ -8,9 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IonicModule } from '@ionic/angular';
 import { CustomDirectivesModule } from '../custom-directives/custom-directives.module';
 import { AppModalComponent } from './app-modal/app-modal.component';
+import { AppRefComponent } from './app-ref/app-ref.component';
 
 @NgModule({
-  declarations: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent],
+  declarations: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, AppRefComponent],
   imports: [CommonModule, RouterModule, IonicModule.forRoot(), CustomDirectivesModule],
   exports: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent],
 })

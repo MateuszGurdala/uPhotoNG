@@ -1,14 +1,35 @@
+
 .modal-container {
     position: absolute;
 
-    width: 50vw;
-    height: 20vh;
+    width: 36vw;
+    height: 34vh;
     border-radius: 2vh 2vh 0 0;
 
-    top: 80vh;
-    left: 25vw;
+    top: 100vh;
+    left: 32vw;
     z-index: 100;
+    transition: top 0.3s;
 
     background-image: var(--main-gradient);
     box-shadow: var(--box-shadow);
+
+    display: grid;
+    grid-template-columns: 60% 40%;
+    padding: 1% 2%;
+}
+
+.extended {
+    top: 66vh;
+}
+
+.data-apps-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: min(2vh, 2vw * var(--ratio));
+    row-gap: min(2vh, 2vw * var(--ratio));
+    height: fit-content;
+    margin: auto;
 }

@@ -1,0 +1,24 @@
+.app-container {
+    width: min(10vh, 10vw * var(--ratio));
+    height: min(10vh, 10vw * var(--ratio));
+
+    display: grid;
+    grid-template-rows: 60% 40%;
+    align-items: center;
+}
+
+.app-icon {
+    margin: auto;
+    font-size: min(5vh, 5vw * var(--ratio));
+}
+
+.app-header {
+    font-size: min(2.6vh, 2.6vw * var(--ratio));
+    width: max-content;
+    margin: auto;
+    white-space: pre-line;
+}
+
+.wrap {
+    width: min-content;
+}

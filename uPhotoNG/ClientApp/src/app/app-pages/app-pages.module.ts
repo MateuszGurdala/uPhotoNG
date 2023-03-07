@@ -11,6 +11,7 @@ import { PhotosPageComponent } from './photos-page/photos-page.component';
 import { AlbumsPageComponent } from './albums-page/albums-page.component';
 import { PlacesPageComponent } from './places-page/places-page.component';
 import { CustomDirectivesModule } from '../custom-directives/custom-directives.module';
+import ModalService from '../services/modal-service.service';
 
 
 
@@ -24,6 +25,6 @@ import { CustomDirectivesModule } from '../custom-directives/custom-directives.m
     CustomDirectivesModule
   ],
   exports: [LayoutComponent, HomePageComponent, AppsPageComponent, PhotosPageComponent, AlbumsPageComponent, PlacesPageComponent],
-  providers: [AccountHttpClientService]
+  providers: [AccountHttpClientService, ModalService]
 })
 export class AppPagesModule { }

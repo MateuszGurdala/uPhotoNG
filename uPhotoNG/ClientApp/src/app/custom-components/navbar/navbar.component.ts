@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import ModalService from '../../services/modal-service.service';
 
 @Component({
   selector: 'u-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-
   isExtended: boolean = false;
 
-  constructor() { }
+  constructor(private modal: ModalService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  extend()
-  {
+  extend() {
     this.isExtended = !this.isExtended;
   }
 
+  showModal() {
+    this.modal.showModal();
+  }
 }
