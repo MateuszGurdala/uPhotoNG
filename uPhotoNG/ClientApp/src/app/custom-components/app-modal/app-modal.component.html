@@ -1,14 +1,14 @@
 <div #self class="modal-container" [ngClass]="{'extended': isExtended}">
     <div class="data-apps-container">
         <app-ref text="Photos" routerLink="/App/Photos" icon="images-outline"></app-ref>
-        <app-ref text="Albums" routerLink="/App/Photos" icon="folder-outline"></app-ref>
-        <app-ref text="Places" routerLink="/App/Photos" icon="earth-outline"></app-ref>
-        <app-ref text="Upload photo" routerLink="/App/Photos" icon="add-outline" [wrap]="true"></app-ref>
-        <app-ref text="Create album" routerLink="/App/Photos" icon="duplicate-outline" [wrap]="true"></app-ref>
-        <app-ref text="Add place" routerLink="/App/Photos" icon="globe-outline" [wrap]="true"></app-ref>
+        <app-ref text="Albums" routerLink="/App/Albums" icon="folder-outline"></app-ref>
+        <app-ref text="Places" routerLink="/App/Places" icon="earth-outline"></app-ref>
+        <app-ref text="Upload photo" routerLink="/App/UploadPhotos" icon="add-outline" [wrap]="true"></app-ref>
+        <app-ref text="Create album" routerLink="/App/Homepage" icon="duplicate-outline" [wrap]="true"></app-ref>
+        <app-ref text="Add place" routerLink="/App/Homepage" icon="globe-outline" [wrap]="true"></app-ref>
     </div>
     <div class="data-apps-container">
-        <app-ref text="Shared" routerLink="/App/Photos" icon="cloud-outline"></app-ref>
-        <app-ref text="Settings" routerLink="/App/Photos" icon="settings-outline"></app-ref>
+        <app-ref text="Shared" routerLink="/App/Homepage" icon="cloud-outline"></app-ref>
+        <app-ref text="Settings" routerLink="/App/Homepage" icon="settings-outline"></app-ref>
     </div>
 </div>

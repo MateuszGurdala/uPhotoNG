@@ -8,13 +8,12 @@ import ModalService from '../../services/modal-service.service';
 })
 export class AppModalComponent implements OnInit {
 
-  isExtended: boolean = true;
+  isExtended: boolean = false;
 
   @ViewChild('self') self: ElementRef;
   @HostListener('document:click', ['$event'])
   clicked(event: Event)
   {
-    console.log((event.target as HTMLElement).ariaLabel);
     if(!this.self.nativeElement.contains(event.target) && (event.target as HTMLElement).ariaLabel !== "apps outline")
     {
       this.isExtended = false;

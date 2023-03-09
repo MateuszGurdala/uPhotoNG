@@ -1,0 +1,10 @@
+<div class="component">
+    <div class="options-div"></div>
+    <div #dropzone class="drop-container empty" (dragenter)="onDragEnter($event)" (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)" (drop)="onDrop($event)" (click)="onClick()" [ngClass]="{'empty': ifContainerEmpty}">
+        <div *ngIf="ifContainerEmpty" class="drop-info-div">
+            <h3 class="drop-text">Drop images or click to select files to upload</h3>
+            <ion-icon name="download-outline" class="drop-icon"></ion-icon>
+        </div>
+    </div>
+</div>

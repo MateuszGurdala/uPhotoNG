@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import AppPageBase from '../app-page-base';
+import AppPageBase from '../../app-page-base';
 
 @Component({
   selector: 'app-photos-page',

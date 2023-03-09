@@ -2,9 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
-import { AccountHttpClientService } from '../../services/account-http-client.service';
-import { AppModalComponent } from '../../custom-components/app-modal/app-modal.component';
-import ModalService from '../../services/modal-service.service';
+import { AccountHttpClientService } from '../../../services/account-http-client.service';
+import { AppModalComponent } from '../../../custom-components/app-modal/app-modal.component';
+import ModalService from '../../../services/modal-service.service';
 
 @Component({
   selector: 'app-layout',

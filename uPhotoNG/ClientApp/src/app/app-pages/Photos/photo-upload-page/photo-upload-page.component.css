@@ -1,0 +1,45 @@
+.component {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-rows: 15% 85%;
+}
+
+.options-div {}
+
+.drop-container {
+    background-image: var(--main-gradient);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    height: 100%;
+
+    border-radius: min(3vh, 3vw * var(--ratio));
+
+    cursor: pointer;
+    color: var(--text-gray);
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drop-info-div {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drop-text {
+    font-size: 3vh;
+}
+
+.drop-icon {
+    font-size: 8vh;
+}
