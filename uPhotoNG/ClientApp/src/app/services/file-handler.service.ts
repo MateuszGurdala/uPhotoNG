@@ -13,4 +13,14 @@ export default class FileHandler {
     });
     return isOk;
   }
+
+  _arrayBufferToBase64(buffer: ArrayBuffer): string {
+    let binary: string = '';
+    let bytes = new Uint8Array(buffer);
+    let len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  }
 }

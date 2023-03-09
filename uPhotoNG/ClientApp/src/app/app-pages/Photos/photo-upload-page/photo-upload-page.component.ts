@@ -81,14 +81,24 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
   }
 
   handleFiles(files: FileList) {
-    if(!this.fileHandler.checkMIMETypes(files))
-    {
-      this.toastr.info("Currently accepted MIME types: image/jpeg, image/png.");
-      this.toastr.error("Some files are of incorrect type.");
-    }
-    else
-    {
-      
+    if (!this.fileHandler.checkMIMETypes(files)) {
+      this.toastr.info('Currently accepted MIME types: image/jpeg, image/png.');
+      this.toastr.error('Some files are of incorrect type.');
+    } else {
+      let reader = new FileReader();
+      reader.addEventListener('load', (event: ProgressEvent<FileReader>) => {
+        if (
+          event.target != null &&
+          event.target.result !== null &&
+          typeof event.target.result !== 'string'
+        ) {
+          let base64str = this.fileHandler._arrayBufferToBase64(
+            event.target.result
+          );
+          console.log(base64str);
+        }
+      });
+      reader.readAsArrayBuffer(files[0]);
     }
   }
 }
