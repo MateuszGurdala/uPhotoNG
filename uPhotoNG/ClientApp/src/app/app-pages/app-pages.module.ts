@@ -11,7 +11,9 @@ import { AlbumsPageComponent } from './albums-page/albums-page.component';
 import { PlacesPageComponent } from './places-page/places-page.component';
 import { CustomDirectivesModule } from '../custom-directives/custom-directives.module';
 import ModalService from '../services/modal-service.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { LayoutComponent } from './Other/layout/layout.component';
+import FileHandler from '../services/file-handler.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { LayoutComponent } from './Other/layout/layout.component';
     AppRoutingModule,
     IonicModule,
     CustomDirectivesModule,
+    ToastrModule
   ],
   exports: [
     LayoutComponent,
@@ -37,6 +40,6 @@ import { LayoutComponent } from './Other/layout/layout.component';
     PlacesPageComponent,
     PhotoUploadPageComponent,
   ],
-  providers: [AccountHttpClientService, ModalService],
+  providers: [AccountHttpClientService, ModalService, ToastrService, FileHandler],
 })
 export class AppPagesModule {}

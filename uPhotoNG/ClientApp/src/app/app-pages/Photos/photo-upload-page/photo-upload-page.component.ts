@@ -5,6 +5,8 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import FileHandler from '../../../services/file-handler.service';
 import AppPageBase from '../../app-page-base';
 
 @Component({
@@ -16,7 +18,11 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
   @ViewChild('dropzone') dropZone: ElementRef;
   ifContainerEmpty: boolean = true;
 
-  constructor(private renderer: Renderer2) {
+  constructor(
+    private renderer: Renderer2,
+    private toastr: ToastrService,
+    private fileHandler: FileHandler
+  ) {
     super();
     this.setTitle('Upload photos');
   }
@@ -60,6 +66,13 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
 
   onDrop(event: DragEvent) {
     event.preventDefault();
+
+    this.renderer.setStyle(
+      this.dropZone.nativeElement,
+      'color',
+      'var(--text-gray)'
+    );
+
     let files: FileList | undefined = event.dataTransfer?.files;
 
     if (typeof files !== 'undefined') {
@@ -68,8 +81,14 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
   }
 
   handleFiles(files: FileList) {
-    [...files].forEach((file, i) => {
-      console.log(file);
-    });
+    if(!this.fileHandler.checkMIMETypes(files))
+    {
+      this.toastr.info("Currently accepted MIME types: image/jpeg, image/png.");
+      this.toastr.error("Some files are of incorrect type.");
+    }
+    else
+    {
+      
+    }
   }
 }
