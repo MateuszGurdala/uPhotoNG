@@ -24,6 +24,7 @@ export interface FileHttpData {
   fileName: string,
   MIMEType: "image/jpeg" | "image/png",
   size: number,
+  date: number,
   album: string,
   place:string,
   base64: string

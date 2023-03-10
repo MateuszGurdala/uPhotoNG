@@ -28,6 +28,7 @@ export default class FileHandler {
         fileData.MIMEType = file.type as 'image/jpeg' | 'image/png';
         fileData.fileName = file.name;
         fileData.size = file.size;
+        fileData.date = file.lastModified;
       }
     });
     reader.readAsArrayBuffer(file);

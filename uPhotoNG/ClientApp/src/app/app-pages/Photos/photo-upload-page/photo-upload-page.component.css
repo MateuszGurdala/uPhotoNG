@@ -58,3 +58,11 @@
     padding: 0.4vh 1.4vw;
     border-radius: 2vh;
 }
+
+.photo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-y: scroll;
+    row-gap: 1vh;
+    padding-top: 1%;
+}

@@ -10,10 +10,11 @@ import { CustomDirectivesModule } from '../custom-directives/custom-directives.m
 import { AppModalComponent } from './app-modal/app-modal.component';
 import { AppRefComponent } from './app-ref/app-ref.component';
 import { ReturnButtonComponent } from './return-button/return-button.component';
+import { FileHTTPDataComponent } from './file-httpdata/file-httpdata.component';
 
 @NgModule({
-  declarations: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, AppRefComponent, ReturnButtonComponent],
+  declarations: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, AppRefComponent, ReturnButtonComponent, FileHTTPDataComponent],
   imports: [CommonModule, RouterModule, IonicModule.forRoot(), CustomDirectivesModule],
-  exports: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, ReturnButtonComponent],
+  exports: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, ReturnButtonComponent, FileHTTPDataComponent],
 })
 export class CustomComponentsModule {}
