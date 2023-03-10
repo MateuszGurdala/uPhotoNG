@@ -9,10 +9,11 @@ import { IonicModule } from '@ionic/angular';
 import { CustomDirectivesModule } from '../custom-directives/custom-directives.module';
 import { AppModalComponent } from './app-modal/app-modal.component';
 import { AppRefComponent } from './app-ref/app-ref.component';
+import { ReturnButtonComponent } from './return-button/return-button.component';
 
 @NgModule({
-  declarations: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, AppRefComponent],
+  declarations: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, AppRefComponent, ReturnButtonComponent],
   imports: [CommonModule, RouterModule, IonicModule.forRoot(), CustomDirectivesModule],
-  exports: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent],
+  exports: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, ReturnButtonComponent],
 })
 export class CustomComponentsModule {}

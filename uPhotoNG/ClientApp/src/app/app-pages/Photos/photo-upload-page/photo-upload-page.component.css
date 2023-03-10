@@ -6,7 +6,10 @@
     grid-template-rows: 15% 85%;
 }
 
-.options-div {}
+.options-div {
+    display: grid;
+    grid-template-columns: 10% 90%;
+}
 
 .drop-container {
     background-image: var(--main-gradient);

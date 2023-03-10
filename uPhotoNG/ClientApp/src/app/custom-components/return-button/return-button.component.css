@@ -1,0 +1,17 @@
+.return-btn-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.return-btn {
+    margin: auto;
+    background-image: var(--main-gradient);
+    box-shadow: var(--box-shadow);
+    padding: 0.2vh 1vw;
+    border-radius: min(2vh, 2vw * var(--ratio));
+}
+
+.return-icon {
+    font-size: min(5vh, 5vw * var(--ratio));
+}

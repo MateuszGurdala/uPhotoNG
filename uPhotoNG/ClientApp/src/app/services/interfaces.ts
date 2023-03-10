@@ -23,5 +23,7 @@ export interface Conditions {
 export interface FileHttpData {
   fileName: string,
   MIMEType: "image/jpeg" | "image/png",
-  size: number
+  size: number,
+  album: string,
+  place:string
 }
