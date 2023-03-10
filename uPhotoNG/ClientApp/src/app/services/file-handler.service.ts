@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FileHttpData } from './interfaces';
 
 @Injectable()
 export default class FileHandler {
@@ -14,7 +15,26 @@ export default class FileHandler {
     return isOk;
   }
 
-  _arrayBufferToBase64(buffer: ArrayBuffer): string {
+  async getHTTPFile(file: File): Promise<FileHttpData> {
+    let fileData: FileHttpData = {} as FileHttpData;
+    let reader = new FileReader();
+    reader.addEventListener('load', (event: ProgressEvent<FileReader>) => {
+      if (
+        event.target != null &&
+        event.target.result !== null &&
+        typeof event.target.result !== 'string'
+      ) {
+        fileData.base64 = this._arrayBufferToBase64(event.target.result);
+        fileData.MIMEType = file.type as 'image/jpeg' | 'image/png';
+        fileData.fileName = file.name;
+        fileData.size = file.size;
+      }
+    });
+    reader.readAsArrayBuffer(file);
+    return fileData;
+  }
+
+  private _arrayBufferToBase64(buffer: ArrayBuffer): string {
     let binary: string = '';
     let bytes = new Uint8Array(buffer);
     let len = bytes.byteLength;

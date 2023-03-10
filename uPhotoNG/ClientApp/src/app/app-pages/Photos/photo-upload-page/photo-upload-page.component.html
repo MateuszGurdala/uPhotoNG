@@ -13,5 +13,8 @@
             <h3 class="drop-text">Drop images or click to select files to upload</h3>
             <ion-icon name="download-outline" class="drop-icon"></ion-icon>
         </div>
+        <div *ngFor="let file of filesHTTPData">
+            <h1>{{file.fileName}}</h1>
+        </div>
     </div>
 </div>

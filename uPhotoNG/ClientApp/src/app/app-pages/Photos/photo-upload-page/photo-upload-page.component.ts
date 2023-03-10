@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { FileHttpData } from 'src/app/services/interfaces';
 import FileHandler from '../../../services/file-handler.service';
 import AppPageBase from '../../app-page-base';
 
@@ -17,6 +18,7 @@ import AppPageBase from '../../app-page-base';
 export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
   @ViewChild('dropzone') dropZone: ElementRef;
   ifContainerEmpty: boolean = true;
+  filesHTTPData: FileHttpData[] = [] as FileHttpData[];
 
   constructor(
     private renderer: Renderer2,
@@ -85,20 +87,12 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
       this.toastr.info('Currently accepted MIME types: image/jpeg, image/png.');
       this.toastr.error('Some files are of incorrect type.');
     } else {
-      let reader = new FileReader();
-      reader.addEventListener('load', (event: ProgressEvent<FileReader>) => {
-        if (
-          event.target != null &&
-          event.target.result !== null &&
-          typeof event.target.result !== 'string'
-        ) {
-          let base64str = this.fileHandler._arrayBufferToBase64(
-            event.target.result
-          );
-          console.log(base64str);
-        }
+      this.ifContainerEmpty = false;
+      [...files].forEach(async (file, i) => {
+        let data = await this.fileHandler.getHTTPFile(file);
+        this.filesHTTPData.push(data);
+        console.log(this.filesHTTPData);
       });
-      reader.readAsArrayBuffer(files[0]);
     }
   }
 }
