@@ -8,7 +8,7 @@
 
 .options-div {
     display: grid;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 10% 75% 15%;
 }
 
 .drop-container {
@@ -45,4 +45,16 @@
 
 .drop-icon {
     font-size: 8vh;
+}
+
+.upload-btn-div {
+    display: flex;
+}
+
+.upload-btn {
+    margin: auto;
+    font-size: 6vh;
+    box-shadow: var(--box-shadow);
+    padding: 0.4vh 1.4vw;
+    border-radius: 2vh;
 }

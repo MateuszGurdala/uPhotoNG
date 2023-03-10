@@ -111,6 +111,8 @@ namespace uPhotoNG.Controllers
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             var authProperties = _authProperties.Clone();
+            authProperties.IssuedUtc = DateTime.UtcNow;
+            authProperties.ExpiresUtc = DateTime.UtcNow.AddMinutes(10);
             authProperties.Items.Add("Id", userAccount.Id.ToString());
 
             await HttpContext.SignInAsync(
