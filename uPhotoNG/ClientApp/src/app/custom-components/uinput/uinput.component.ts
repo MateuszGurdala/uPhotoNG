@@ -46,5 +46,10 @@ export class UInputComponent implements OnInit, AfterViewInit {
       'font-size',
       this.inputSize
     );
+    this.renderer.setStyle(
+      this.inputEl.nativeElement,
+      'margin-top',
+      (((this.inputSize[0] as unknown) as number) / 4) + 'vh'
+    );
   }
 }
