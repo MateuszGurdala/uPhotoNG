@@ -1,18 +1,25 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FileHttpData } from '../../services/interfaces';
 
 @Component({
   selector: 'file-httpdata',
   templateUrl: './file-httpdata.component.html',
-  styleUrls: ['./file-httpdata.component.css']
+  styleUrls: ['./file-httpdata.component.css'],
 })
 export class FileHTTPDataComponent implements OnInit {
-
   @Input('file') fileData: FileHttpData;
+  @Input('index') index: number;
+  @Input('albums') userAlbums: string[];
+  @Input('places') userPlaces: string[];
+  @Input('onDelete') deleteFun: Function;
+  @Output() delete: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onDelete()
+  {
+    this.delete.emit(this.index);
   }
-
 }

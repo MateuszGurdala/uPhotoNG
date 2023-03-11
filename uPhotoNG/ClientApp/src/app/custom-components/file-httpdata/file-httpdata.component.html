@@ -1,34 +1,18 @@
 <div shadowReact class="container">
-    <div class="fav-title-img-div">
-        <div class="fav-title-div">
-            <input type="checkbox" class="star" />
-            <!-- <h3 class="title">{{fileData.fileName}}</h3> -->
-            <u-input text="Login" input-size="2vh" label-size="0" input-type="text"
-                [(value)]="fileData.fileName"></u-input>
-        </div>
-        <img src="data:{{fileData.MIMEType}};base64,{{fileData.base64}}" class="photo" />
+    <div class="fav-title-delete-div">
+        <input type="checkbox" class="star" [(ngModel)]="fileData.isFavorite" />
+        <u-input text="Login" input-size="2vh" label-size="0" input-type="text" [(value)]="fileData.fileName"></u-input>
+        <ion-icon colorReact name="trash-outline" class="delete-btn" (click)="onDelete()"></ion-icon>
     </div>
-    <div class="album-place-tags-del-div">
-        <div class="delete-btn-div">
-            <ion-icon colorReact name="trash-outline" class="delete-btn"></ion-icon>
+    <div class="img-place-album-tags-div">
+        <img src="data:{{fileData.MIMEType}};base64,{{fileData.base64}}" class="photo" />
+        <div class="album-place-tags-div">
+            <u-input text="Album" input-size="2vh" label-size="1.8vh" input-type="text"
+                [(value)]="fileData.album"></u-input>
+            <u-input text="Place" input-size="2vh" label-size="1.8vh" input-type="text"
+                [(value)]="fileData.place"></u-input>
+            <u-input text="Tags" input-size="2vh" label-size="1.8vh" input-type="text"
+                [(value)]="fileData.tags"></u-input>
         </div>
-        <u-input text="Album" input-size="2vh" label-size="1.8vh" input-type="text"
-            [(value)]="fileData.album"></u-input>
-        <u-input text="Place" input-size="2vh" label-size="1.8vh" input-type="text"
-            [(value)]="fileData.place"></u-input>
-        <u-input text="Tags" input-size="2vh" label-size="1.8vh" input-type="text" [(value)]="fileData.place"></u-input>
     </div>
 </div>
-
-
-
-<!-- 
-Title 1
-Image
-Album
-Place
-Tags
-Date-Taken
-IsFavorite 1
-Delete? 1
--->

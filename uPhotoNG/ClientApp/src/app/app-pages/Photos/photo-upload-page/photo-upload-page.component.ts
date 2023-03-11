@@ -17,8 +17,12 @@ import AppPageBase from '../../app-page-base';
 })
 export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
   @ViewChild('dropzone') dropZone: ElementRef;
+
   ifContainerEmpty: boolean = true;
   filesHTTPData: FileHttpData[] = [] as FileHttpData[];
+
+  userAlbums: string[] = ["OtherPhotos"];
+  userPlaces: string[] = ["NoPlace"];
 
   constructor(
     private renderer: Renderer2,
@@ -94,6 +98,11 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
         this.filesHTTPData.push(data);
       });
     }
+  }
+  
+  deleteElement(index: number)
+  {
+    this.filesHTTPData.splice(index, 1);
   }
 
   upload() {
