@@ -62,3 +62,20 @@
     height: fit-content;
     margin: auto 0;
 }
+
+.u-select {
+    background-color: transparent;
+    color: var(--text-gray);
+    font-size: 2vh;
+    font-weight: 500;
+    border-style: solid;
+    border-color: var(--accent);
+    border-width: 0 0 0.2rem 0.2rem;
+    padding: 0 0 0.4rem 0.4rem;
+}   
+
+.u-option {
+    background-color: var(--main);
+    color: var(--accent);
+    font-size: 1.8vh;
+}

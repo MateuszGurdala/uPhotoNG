@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FileHttpData } from '../../services/interfaces';
+import { DatabaseOption, FileHttpData } from '../../services/interfaces';
 
 @Component({
   selector: 'file-httpdata',
@@ -9,8 +9,8 @@ import { FileHttpData } from '../../services/interfaces';
 export class FileHTTPDataComponent implements OnInit {
   @Input('file') fileData: FileHttpData;
   @Input('index') index: number;
-  @Input('albums') userAlbums: string[];
-  @Input('places') userPlaces: string[];
+  @Input('albums') userAlbums: DatabaseOption[];
+  @Input('places') userPlaces: DatabaseOption[];
   @Input('onDelete') deleteFun: Function;
   @Output() delete: EventEmitter<number> = new EventEmitter<number>();
 

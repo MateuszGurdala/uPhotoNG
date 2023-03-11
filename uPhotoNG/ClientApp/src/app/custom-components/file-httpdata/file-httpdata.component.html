@@ -7,10 +7,8 @@
     <div class="img-place-album-tags-div">
         <img src="data:{{fileData.MIMEType}};base64,{{fileData.base64}}" class="photo" />
         <div class="album-place-tags-div">
-            <u-input text="Album" input-size="2vh" label-size="1.8vh" input-type="text"
-                [(value)]="fileData.album"></u-input>
-            <u-input text="Place" input-size="2vh" label-size="1.8vh" input-type="text"
-                [(value)]="fileData.place"></u-input>
+            <u-select text="Album" [data]="userAlbums" label-size="1.8vh" input-size="2vh" [(value)]="fileData.album"></u-select>
+            <u-select text="Place" [data]="userPlaces" label-size="1.8vh" input-size="2vh" [(value)]="fileData.place"></u-select>
             <u-input text="Tags" input-size="2vh" label-size="1.8vh" input-type="text"
                 [(value)]="fileData.tags"></u-input>
         </div>

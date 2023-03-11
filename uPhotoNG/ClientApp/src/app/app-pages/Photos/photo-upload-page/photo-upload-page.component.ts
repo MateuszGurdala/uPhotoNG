@@ -4,9 +4,11 @@ import {
   OnInit,
   Renderer2,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { FileHttpData } from 'src/app/services/interfaces';
+import { FileHTTPDataComponent } from 'src/app/custom-components/file-httpdata/file-httpdata.component';
+import { DatabaseOption, FileHttpData } from 'src/app/services/interfaces';
 import FileHandler from '../../../services/file-handler.service';
 import AppPageBase from '../../app-page-base';
 
@@ -17,12 +19,15 @@ import AppPageBase from '../../app-page-base';
 })
 export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
   @ViewChild('dropzone') dropZone: ElementRef;
-
+  @ViewChildren('fileHttpDataElement') elements: FileHTTPDataComponent[];
   ifContainerEmpty: boolean = true;
   filesHTTPData: FileHttpData[] = [] as FileHttpData[];
 
-  userAlbums: string[] = ["OtherPhotos"];
-  userPlaces: string[] = ["NoPlace"];
+  userAlbums: DatabaseOption[] = [
+    { id: '1337', value: 'OtherPhotos' },
+    { id: '2137', value: 'AnotherAlbum' },
+  ];
+  userPlaces: DatabaseOption[] = [{ id: '1xd2', value: 'NoPlace' }];
 
   constructor(
     private renderer: Renderer2,
@@ -93,16 +98,18 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
       this.toastr.error('Some files are of incorrect type.');
     } else {
       this.ifContainerEmpty = false;
-      [...files].forEach(async (file, i) => {
+      [...files].forEach(async (file) => {
         let data = await this.fileHandler.getHTTPFile(file);
         this.filesHTTPData.push(data);
       });
     }
   }
-  
-  deleteElement(index: number)
-  {
+
+  deleteElement(index: number) {
     this.filesHTTPData.splice(index, 1);
+    if (this.filesHTTPData.length === 0) {
+      this.ifContainerEmpty = true;
+    }
   }
 
   upload() {

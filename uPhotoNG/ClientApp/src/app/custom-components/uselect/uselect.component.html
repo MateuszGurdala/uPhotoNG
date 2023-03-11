@@ -1,0 +1,6 @@
+<div>
+    <h3 #label>{{text + ':'}}</h3>
+    <select #select [(ngModel)]="value" (change)="valueChanged()">
+        <option #option *ngFor="let element of data" [ngValue]="element.id">{{element.value}}</option>
+    </select>
+</div>

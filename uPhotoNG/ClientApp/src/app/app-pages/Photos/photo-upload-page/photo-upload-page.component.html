@@ -13,7 +13,7 @@
             <h3 class="drop-text">Drop images or click to select files to upload</h3>
             <ion-icon name="download-outline" class="drop-icon"></ion-icon>
         </div>
-        <file-httpdata *ngFor="let file of filesHTTPData; index as i" 
+        <file-httpdata #fileHttpDataElement *ngFor="let file of filesHTTPData; index as i" 
                         [file]="file"
                         [index]="i"
                         [albums]="userAlbums"

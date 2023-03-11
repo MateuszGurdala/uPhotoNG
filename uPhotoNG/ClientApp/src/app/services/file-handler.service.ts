@@ -30,9 +30,7 @@ export default class FileHandler {
         fileData.size = file.size;
         fileData.date = file.lastModified;
         fileData.isFavorite = false;
-        fileData.tags = "";
-        fileData.place = "";
-        fileData.album = "";
+        fileData.tags = "#none";
 
       }
     });

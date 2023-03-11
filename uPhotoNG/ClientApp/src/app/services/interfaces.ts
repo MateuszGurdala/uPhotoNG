@@ -31,3 +31,8 @@ export interface FileHttpData {
   base64: string,
   isFavorite: boolean
 }
+
+export interface DatabaseOption {
+  id: string,
+  value: string
+}
