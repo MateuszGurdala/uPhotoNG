@@ -27,5 +27,7 @@ export interface FileHttpData {
   date: number,
   album: string,
   place:string,
-  base64: string
+  tags: string,
+  base64: string,
+  isFavorite: boolean
 }

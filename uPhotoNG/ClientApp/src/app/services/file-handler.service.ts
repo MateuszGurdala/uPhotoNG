@@ -29,6 +29,11 @@ export default class FileHandler {
         fileData.fileName = file.name;
         fileData.size = file.size;
         fileData.date = file.lastModified;
+        fileData.isFavorite = false;
+        fileData.tags = "";
+        fileData.place = "";
+        fileData.album = "";
+
       }
     });
     reader.readAsArrayBuffer(file);
