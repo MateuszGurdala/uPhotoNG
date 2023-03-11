@@ -3,8 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
-import { AccountHttpClientService } from '../services/account-http-client.service';
-import ToolBox from '../services/tool-box.service';
+import { AccountHttpClientService } from '../../services/account-http-client.service';
+import ToolBox from '../../services/tool-box.service';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -14,8 +14,8 @@ import ToolBox from '../services/tool-box.service';
 export class SignInPageComponent implements OnInit {
   isProcessing: boolean = false;
 
-  login: string;
-  password: string;
+  login: string = "";
+  password: string = "";
 
   loginEmpty: boolean = false;
   passwordEmpty: boolean = false;

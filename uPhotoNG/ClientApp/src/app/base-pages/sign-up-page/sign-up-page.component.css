@@ -57,3 +57,9 @@
     color: red;
     border-color: red;
 }
+
+.inputs-div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+}

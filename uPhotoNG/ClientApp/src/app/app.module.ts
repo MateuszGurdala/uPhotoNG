@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
-import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { WelcomePageComponent } from './base-pages/welcome-page/welcome-page.component';
+import { SignInPageComponent } from './base-pages/sign-in-page/sign-in-page.component';
+import { SignUpPageComponent } from './base-pages/sign-up-page/sign-up-page.component';
 import { CustomComponentsModule } from './custom-components/custom-components.module';
 import ToolBox from './services/tool-box.service';
 import { ToastrModule } from 'ngx-toastr';

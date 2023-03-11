@@ -15,14 +15,16 @@
                 <li class="requirement" [ngClass]="{'invalid' : !cond.areSame}">Given passwords must be the same.</li>
                 <li class="requirement">All spaces are automatically removed.</li>
             </ul>
-            <u-input text="Login" input-size="2vh" label-size="1.8vh" input-type="text" [(value)]="registerData.login"
-                [valid]="cond.loginFilled"></u-input>
-            <u-input text="E-mail" input-size="2vh" label-size="1.8vh" input-type="text" [(value)]="registerData.email"
-                [valid]="cond.emailFilled"></u-input>
-            <u-input text="Password" input-size="2vh" label-size="1.8vh" input-type="password"
-                [(value)]="registerData.password" [valid]="cond.passwordFilled"></u-input>
-            <u-input text="Confirm password" input-size="2vh" label-size="1.8vh" input-type="password"
-                [(value)]="registerData.confirmation" [valid]="cond.confirmationFilled"></u-input>
+            <div class="inputs-div">
+                <u-input text="Login" input-size="2vh" label-size="1.8vh" input-type="text"
+                    [(value)]="registerData.login" [valid]="cond.loginFilled"></u-input>
+                <u-input text="E-mail" input-size="2vh" label-size="1.8vh" input-type="text"
+                    [(value)]="registerData.email" [valid]="cond.emailFilled"></u-input>
+                <u-input text="Password" input-size="2vh" label-size="1.8vh" input-type="password"
+                    [(value)]="registerData.password" [valid]="cond.passwordFilled"></u-input>
+                <u-input text="Confirm password" input-size="2vh" label-size="1.8vh" input-type="password"
+                    [(value)]="registerData.confirmation" [valid]="cond.confirmationFilled"></u-input>
+            </div>
             <div class="button-div">
                 <button *ngIf="!isProcessing" class="submit-button u-background-react" type="submit">Submit</button>
                 <div *ngIf="isProcessing" class="lds-ring">

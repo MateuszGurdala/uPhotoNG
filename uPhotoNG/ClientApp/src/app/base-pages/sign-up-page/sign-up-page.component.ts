@@ -3,9 +3,9 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
-import { AccountHttpClientService } from '../services/account-http-client.service';
-import { Conditions, RegisterData } from '../services/interfaces';
-import ToolBox from '../services/tool-box.service';
+import { AccountHttpClientService } from '../../services/account-http-client.service';
+import { Conditions, RegisterData } from '../../services/interfaces';
+import ToolBox from '../../services/tool-box.service';
 
 @Component({
   selector: 'app-sign-up-page',

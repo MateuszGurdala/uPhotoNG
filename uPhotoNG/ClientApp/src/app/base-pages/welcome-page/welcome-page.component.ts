@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { AccountHttpClientService } from '../services/account-http-client.service';
+import { AccountHttpClientService } from '../../services/account-http-client.service';
 
 @Component({
   selector: 'app-welcome-page',
