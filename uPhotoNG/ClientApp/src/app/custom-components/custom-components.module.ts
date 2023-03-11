@@ -11,10 +11,11 @@ import { AppModalComponent } from './app-modal/app-modal.component';
 import { AppRefComponent } from './app-ref/app-ref.component';
 import { ReturnButtonComponent } from './return-button/return-button.component';
 import { FileHTTPDataComponent } from './file-httpdata/file-httpdata.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, AppRefComponent, ReturnButtonComponent, FileHTTPDataComponent],
-  imports: [CommonModule, RouterModule, IonicModule.forRoot(), CustomDirectivesModule],
+  imports: [CommonModule, RouterModule, IonicModule.forRoot(), CustomDirectivesModule, FormsModule],
   exports: [FooterComponent, UInputComponent, HeaderComponent, NavbarComponent, AppModalComponent, ReturnButtonComponent, FileHTTPDataComponent],
 })
 export class CustomComponentsModule {}
