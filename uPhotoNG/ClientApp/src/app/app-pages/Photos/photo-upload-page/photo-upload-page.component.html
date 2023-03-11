@@ -3,7 +3,7 @@
         <return-button routerLink="/App/Photos"></return-button>
         <div></div>
         <div class="upload-btn-div">
-            <ion-icon backgroundReact name="cloud-upload-outline" class="upload-btn"></ion-icon>
+            <ion-icon backgroundReact name="cloud-upload-outline" class="upload-btn" (click)="upload()"></ion-icon>
         </div>
     </div>
     <div #dropzone class="drop-container empty" (dragenter)="onDragEnter($event)" (dragover)="onDragOver($event)"

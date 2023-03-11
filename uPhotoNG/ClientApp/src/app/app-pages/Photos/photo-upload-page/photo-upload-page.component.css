@@ -19,7 +19,6 @@
 
     border-radius: min(3vh, 3vw * var(--ratio));
 
-    cursor: pointer;
     color: var(--text-gray);
 }
 
@@ -27,6 +26,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 }
 
 .drop-info-div {
