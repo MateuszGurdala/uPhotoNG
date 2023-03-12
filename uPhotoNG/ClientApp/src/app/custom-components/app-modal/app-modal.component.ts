@@ -2,21 +2,20 @@ import {
   Component,
   ElementRef,
   HostListener,
-  OnInit,
   ViewChild,
 } from '@angular/core';
-import ModalService from '../../services/modal-service.service';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './app-modal.component.html',
   styleUrls: ['./app-modal.component.css'],
 })
-export class AppModalComponent implements OnInit {
-  isExtended: boolean = false;
-
+export class AppModalComponent {
   @ViewChild('self') self: ElementRef;
   @HostListener('document:click', ['$event'])
+
+  isExtended: boolean = false;
+  
   clicked(event: Event) {
     console.log();
     let isTargetModal: boolean = this.self.nativeElement.contains(event.target);
@@ -29,7 +28,5 @@ export class AppModalComponent implements OnInit {
     }
   }
 
-  constructor(private modal: ModalService) {}
-
-  ngOnInit(): void {}
+  constructor() {}
 }
