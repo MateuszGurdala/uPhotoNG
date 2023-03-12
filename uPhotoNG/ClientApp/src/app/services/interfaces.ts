@@ -36,3 +36,14 @@ export interface DatabaseOption {
   id: string;
   value: string;
 }
+
+export interface SelectedValues {
+  album: string;
+  place: string;
+  tags: string;
+}
+
+export interface SetValue {
+  target: string,
+  value: string
+}

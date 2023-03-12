@@ -1,0 +1,44 @@
+.upload-settings-div {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 10% 20% 20% 35%;
+}
+
+.upload-settings-btn {
+    color: var(--text-gray);
+    font-size: min(5vh, 5vw * var(--ratio));
+    background-image: var(--main-gradient);
+    box-shadow: var(--box-shadow);
+    padding: 0.4vh 1vw;
+    border-radius: min(2vh, 2vw * var(--ratio));
+    cursor: pointer;
+    margin: auto;
+    position: relative;
+
+    left: 0vw;
+    transition: left 0.4s;
+}
+
+.upload-settings-btn:hover {
+    color: var(--accent-tint);
+}
+
+.upload-settings-btn:active {
+    color: var(--accent-shade);
+}
+
+
+.active {
+    color: var(--accent);
+    left: 40vw;
+}
+
+.div-center {
+    width: 90%;
+    height: fit-content;
+    margin: auto 0;
+}
+
+.hidden {
+    display: none;
+}

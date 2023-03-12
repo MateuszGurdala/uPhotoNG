@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FileHTTPDataComponent } from 'src/app/custom-components/file-httpdata/file-httpdata.component';
 import { DatabaseOption, FileHttpData } from 'src/app/services/interfaces';
 import FileHandler from '../../../services/file-handler.service';
+import { SelectedValues, SetValue } from '../../../services/interfaces';
 import AppPageBase from '../../app-page-base';
 
 @Component({
@@ -22,9 +23,7 @@ export class PhotoUploadPageComponent extends AppPageBase {
 
   ifContainerEmpty: boolean = true;
   filesHTTPData: FileHttpData[] = [] as FileHttpData[];
-  selectedAlbum: string;
-  selectedPlace: string;
-  selectedTags: string;
+  selectedValues: SelectedValues = {} as SelectedValues;
   userAlbums: DatabaseOption[] = [
     { id: '1337', value: 'OtherPhotos' },
     { id: '2137', value: 'AnotherAlbum' },
@@ -38,9 +37,9 @@ export class PhotoUploadPageComponent extends AppPageBase {
   ) {
     super();
     this.setTitle('Upload photos');
-    this.selectedAlbum = this.userAlbums[0].id;
-    this.selectedPlace = this.userPlaces[0].id;
-    this.selectedTags = '#none';
+    this.selectedValues.album = this.userAlbums[0].id;
+    this.selectedValues.place = this.userPlaces[0].id;
+    this.selectedValues.tags = '#none';
   }
 
   onDragEnter(event: DragEvent) {
@@ -103,9 +102,9 @@ export class PhotoUploadPageComponent extends AppPageBase {
       this.ifContainerEmpty = false;
       [...files].forEach(async (file) => {
         let data = await this.fileHandler.getHTTPFile(file);
-        data.album = this.selectedAlbum;
-        data.place = this.selectedPlace;
-        data.tags = this.selectedTags;
+        data.album = this.selectedValues.album;
+        data.place = this.selectedValues.place;
+        data.tags = this.selectedValues.tags;
         this.filesHTTPData.push(data);
       });
     }
@@ -118,21 +117,10 @@ export class PhotoUploadPageComponent extends AppPageBase {
     }
   }
 
-  setAlbumForAll(data: string) {
-    this.filesHTTPData.forEach((fileData) => {
-      fileData.album = data;
-    });
-  }
-
-  setPlaceForAll(data: string) {
-    this.filesHTTPData.forEach((fileData) => {
-      fileData.place = data;
-    });
-  }
-
-  setTagsForAll(data: string) {
-    this.filesHTTPData.forEach((fileData) => {
-      fileData.tags = data;
+  setValueHandler(data: SetValue) {
+    this.filesHTTPData.forEach((fileData: FileHttpData) => {
+      type StatusKey = keyof typeof fileData;
+      (fileData[data.target as StatusKey] as string) = data.value;
     });
   }
 

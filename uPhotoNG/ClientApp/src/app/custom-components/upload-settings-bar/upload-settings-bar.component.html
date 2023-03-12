@@ -1,0 +1,17 @@
+<div class="upload-settings-div">
+    <ion-icon name="options-outline" class="upload-settings-btn" (click)="onClick()" [ngClass]="{'active': isExtended}"></ion-icon>
+    <div class="div-center">
+        <u-select #albumsInput text="Set album" [data]="userAlbums" input-size="2.4vh" label-size="2vh"
+            [(value)]="selectedValues.album" (valueChange)="setValueFun([albumsInput, $event])"
+            [ngClass]="{'hidden': !showAlbumInput}"></u-select>
+    </div>
+    <div class="div-center">
+        <u-select #placesInput text="Set place" [data]="userPlaces" input-size="2.4vh" label-size="2vh"
+            [(value)]="selectedValues.place" (valueChange)="setValueFun([placesInput, $event])"
+            [ngClass]="{'hidden': !showPlaceInput}"></u-select>
+    </div>
+    <div class="div-center">
+        <u-input #tagsInput text="Set tags" input-size="2.4vh" label-size="2vh" [(value)]="selectedValues.tags"
+            (valueChange)="setValueFun([tagsInput, $event])" [ngClass]="{'hidden': !showTagsInput}"></u-input>
+    </div>
+</div>

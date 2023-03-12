@@ -1,18 +1,9 @@
 <div class="component">
     <div class="options-div">
         <return-button routerLink="/App/Photos"></return-button>
-        <div class="upload-settings-div">
-            <!-- <ion-icon name="options-outline" class="upload-settings-btn"></ion-icon> -->
-            <br />
-            <u-select text="Set album" [data]="userAlbums" input-size="2.4vh" label-size="2vh" [(value)]="selectedAlbum"
-                (valueChange)="setAlbumForAll($event)"></u-select>
-            <br />
-            <u-select text="Set place" [data]="userPlaces" input-size="2.4vh" label-size="2vh" [(value)]="selectedPlace"
-                (valueChange)="setPlaceForAll($event)"></u-select>
-            <br />
-            <u-input text="Set tags" input-size="2.4vh" label-size="2vh" [(value)]="selectedTags"
-                (valueChange)="setTagsForAll($event)"></u-input>
-        </div>
+        <upload-settings-bar [albumsData]="userAlbums" [placesData]="userPlaces"
+            [selectedValues]="selectedValues"
+            (setValue)="setValueHandler($event)"></upload-settings-bar>
         <div class="upload-btn-div">
             <ion-icon backgroundReact name="cloud-upload-outline" class="upload-btn" (click)="upload()"></ion-icon>
         </div>
