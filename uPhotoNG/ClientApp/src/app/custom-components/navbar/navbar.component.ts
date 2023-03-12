@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import ModalService from '../../services/modal-service.service';
 
 @Component({
@@ -6,19 +6,16 @@ import ModalService from '../../services/modal-service.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   isExtended: boolean = false;
 
   constructor(private modal: ModalService) {}
-
-  ngOnInit(): void {}
 
   extend() {
     this.isExtended = !this.isExtended;
   }
 
-  retract()
-  {
+  retract() {
     this.isExtended = false;
   }
 

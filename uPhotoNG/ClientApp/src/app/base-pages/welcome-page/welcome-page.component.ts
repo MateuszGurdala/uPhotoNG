@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AccountHttpClientService } from '../../services/account-http-client.service';
@@ -8,7 +8,7 @@ import { AccountHttpClientService } from '../../services/account-http-client.ser
   templateUrl: './welcome-page.component.html',
   styleUrls: ['./welcome-page.component.css'],
 })
-export class WelcomePageComponent implements OnInit {
+export class WelcomePageComponent {
   constructor(
     private titleSrv: Title,
     private httpClient: AccountHttpClientService,
@@ -21,6 +21,4 @@ export class WelcomePageComponent implements OnInit {
     });
     this.titleSrv.setTitle('uPhoto');
   }
-
-  ngOnInit(): void {}
 }

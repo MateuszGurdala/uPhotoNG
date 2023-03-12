@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -12,7 +12,7 @@ import ToolBox from '../../services/tool-box.service';
   templateUrl: './sign-up-page.component.html',
   styleUrls: ['./sign-up-page.component.css'],
 })
-export class SignUpPageComponent implements OnInit {
+export class SignUpPageComponent {
   registerData: RegisterData = {
     login: '',
     email: '',
@@ -37,8 +37,6 @@ export class SignUpPageComponent implements OnInit {
     this.titleSrv.setTitle('Sign up');
     this.resetConditions();
   }
-
-  ngOnInit(): void {}
 
   onSubmit() {
     this.isProcessing = true;

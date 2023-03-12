@@ -21,18 +21,18 @@ export interface Conditions {
 }
 
 export interface FileHttpData {
-  fileName: string,
-  MIMEType: "image/jpeg" | "image/png",
-  size: number,
-  date: number,
-  album: string,
-  place:string,
-  tags: string,
-  base64: string,
-  isFavorite: boolean
+  fileName: string;
+  MIMEType: 'image/jpeg' | 'image/png';
+  size: number;
+  date: number;
+  album: string;
+  place: string;
+  tags: string;
+  base64: string;
+  isFavorite: boolean;
 }
 
 export interface DatabaseOption {
-  id: string,
-  value: string
+  id: string;
+  value: string;
 }

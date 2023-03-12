@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -11,12 +11,10 @@ import ToolBox from '../../services/tool-box.service';
   templateUrl: './sign-in-page.component.html',
   styleUrls: ['./sign-in-page.component.css'],
 })
-export class SignInPageComponent implements OnInit {
+export class SignInPageComponent {
   isProcessing: boolean = false;
-
-  login: string = "";
-  password: string = "";
-
+  login: string = '';
+  password: string = '';
   loginEmpty: boolean = false;
   passwordEmpty: boolean = false;
 
@@ -27,16 +25,13 @@ export class SignInPageComponent implements OnInit {
     private httpClient: AccountHttpClientService,
     private router: Router
   ) {
-    this.httpClient.validateAuthentication().subscribe(next => {
-      if(next)
-      {
+    this.httpClient.validateAuthentication().subscribe((next) => {
+      if (next) {
         this.router.navigate(['/App/Homepage']);
       }
     });
     this.titleSrv.setTitle('Sign in');
   }
-
-  ngOnInit(): void {}
 
   otherSignIn() {
     this.toastr.error('This option is not yet available', 'Whoops');

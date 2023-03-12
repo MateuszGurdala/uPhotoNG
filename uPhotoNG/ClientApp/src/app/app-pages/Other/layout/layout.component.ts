@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
@@ -11,7 +11,7 @@ import ModalService from '../../../services/modal-service.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
 })
-export class LayoutComponent implements OnInit, AfterViewInit {
+export class LayoutComponent implements AfterViewInit {
   @ViewChild('appModal') modalRef: AppModalComponent;
 
   constructor(
@@ -24,8 +24,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.modal.referenceModal(this.modalRef);
   }
-
-  ngOnInit(): void {}
 
   async signOut() {
     let response = await firstValueFrom(this.httpClient.signOut());

@@ -1,7 +1,6 @@
 import {
   Component,
   ElementRef,
-  OnInit,
   Renderer2,
   ViewChild,
   ViewChildren,
@@ -20,13 +19,12 @@ import AppPageBase from '../../app-page-base';
 export class PhotoUploadPageComponent extends AppPageBase {
   @ViewChild('dropzone') dropZone: ElementRef;
   @ViewChildren('fileHttpDataElement') elements: FileHTTPDataComponent[];
+
   ifContainerEmpty: boolean = true;
   filesHTTPData: FileHttpData[] = [] as FileHttpData[];
-
   selectedAlbum: string;
   selectedPlace: string;
   selectedTags: string;
-
   userAlbums: DatabaseOption[] = [
     { id: '1337', value: 'OtherPhotos' },
     { id: '2137', value: 'AnotherAlbum' },

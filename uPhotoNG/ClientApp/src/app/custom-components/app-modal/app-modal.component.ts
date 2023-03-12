@@ -1,9 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -13,9 +8,8 @@ import {
 export class AppModalComponent {
   @ViewChild('self') self: ElementRef;
   @HostListener('document:click', ['$event'])
-
   isExtended: boolean = false;
-  
+
   clicked(event: Event) {
     console.log();
     let isTargetModal: boolean = this.self.nativeElement.contains(event.target);

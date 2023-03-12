@@ -30,8 +30,7 @@ export default class FileHandler {
         fileData.size = file.size;
         fileData.date = file.lastModified;
         fileData.isFavorite = false;
-        fileData.tags = "#none";
-
+        fileData.tags = '#none';
       }
     });
     reader.readAsArrayBuffer(file);

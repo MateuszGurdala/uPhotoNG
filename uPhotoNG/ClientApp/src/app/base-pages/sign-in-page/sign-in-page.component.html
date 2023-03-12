@@ -3,8 +3,10 @@
         <form class="account-div uphoto-div" (ngSubmit)="onSubmit()">
             <h1 class="text-gradient header">Sign in using uPhoto account</h1>
             <div>
-                <u-input text="Login" input-size="2.2vh" label-size="2vh" input-type="text" [(value)]="login" [valid]="!loginEmpty"></u-input>
-                <u-input text="Password" input-size="2.2vh" label-size="2vh" input-type="password" [(value)]="password" [valid]="!passwordEmpty"></u-input>
+                <u-input text="Login" input-size="2.2vh" label-size="2vh" input-type="text" [(value)]="login"
+                    [valid]="!loginEmpty"></u-input>
+                <u-input text="Password" input-size="2.2vh" label-size="2vh" input-type="password" [(value)]="password"
+                    [valid]="!passwordEmpty"></u-input>
             </div>
             <div class="button-div">
                 <button *ngIf="!isProcessing" class="u-background-react submit-button" type="submit">Sign In</button>

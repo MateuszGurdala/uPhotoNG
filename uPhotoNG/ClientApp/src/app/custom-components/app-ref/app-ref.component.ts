@@ -1,4 +1,4 @@
-import { Component, Host, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Host, HostListener, Input } from '@angular/core';
 import { AppModalComponent } from '../app-modal/app-modal.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { AppModalComponent } from '../app-modal/app-modal.component';
   templateUrl: './app-ref.component.html',
   styleUrls: ['./app-ref.component.css'],
 })
-export class AppRefComponent implements OnInit {
+export class AppRefComponent {
   @Input('text') headerText: string;
   @Input('wrap') wrapText: boolean = false;
   @Input('routerLink') link: string;
@@ -18,6 +18,4 @@ export class AppRefComponent implements OnInit {
   }
 
   constructor(@Host() private parent: AppModalComponent) {}
-
-  ngOnInit(): void {}
 }

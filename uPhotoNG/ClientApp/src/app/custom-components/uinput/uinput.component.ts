@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   Input,
-  OnInit,
   Output,
   Renderer2,
   ViewChild,
@@ -15,7 +14,7 @@ import { EventEmitter } from '@angular/core';
   templateUrl: './uinput.component.html',
   styleUrls: ['./uinput.component.css'],
 })
-export class UInputComponent implements OnInit, AfterViewInit {
+export class UInputComponent implements AfterViewInit {
   @Input('text') text: string;
   @Input('input-type') inputType: string;
   @Input('input-size') inputSize: string;
@@ -31,10 +30,9 @@ export class UInputComponent implements OnInit, AfterViewInit {
     this.value = this.inputEl.nativeElement.value;
     this.valueChange.emit(this.value);
   }
-
+  
   constructor(private renderer: Renderer2) {}
 
-  ngOnInit(): void {}
   ngAfterViewInit(): void {
     this.renderer.setStyle(
       this.labelEl.nativeElement,
@@ -49,7 +47,7 @@ export class UInputComponent implements OnInit, AfterViewInit {
     this.renderer.setStyle(
       this.inputEl.nativeElement,
       'margin-top',
-      (((this.inputSize[0] as unknown) as number) / 4) + 'vh'
+      (this.inputSize[0] as unknown as number) / 4 + 'vh'
     );
   }
 }

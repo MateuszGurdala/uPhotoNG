@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import AppPageBase from '../app-page-base';
 
 @Component({
@@ -6,11 +6,9 @@ import AppPageBase from '../app-page-base';
   templateUrl: './albums-page.component.html',
   styleUrls: ['./albums-page.component.css'],
 })
-export class AlbumsPageComponent extends AppPageBase implements OnInit {
+export class AlbumsPageComponent extends AppPageBase {
   constructor() {
     super();
     this.setTitle('Albums');
   }
-
-  ngOnInit(): void {}
 }

@@ -1,6 +1,5 @@
 .footer {
     height: 8vh;
-    /* background-image: var(--main-gradient); */
     box-shadow: var(--box-shadow);
     padding: 0 20%;
     display: flex;

@@ -4,17 +4,17 @@ import { ColorReactDirective } from './color-react.directive';
 import { ShadowReactDirective } from './shadow-react.directive';
 import { BackgroundReactDirective } from './background-react.directive';
 
-
-
 @NgModule({
   declarations: [
     ColorReactDirective,
     ShadowReactDirective,
-    BackgroundReactDirective
+    BackgroundReactDirective,
   ],
-  imports: [
-    CommonModule
+  imports: [CommonModule],
+  exports: [
+    ColorReactDirective,
+    ShadowReactDirective,
+    BackgroundReactDirective,
   ],
-  exports:[ColorReactDirective, ShadowReactDirective, BackgroundReactDirective]
 })
-export class CustomDirectivesModule { }
+export class CustomDirectivesModule {}

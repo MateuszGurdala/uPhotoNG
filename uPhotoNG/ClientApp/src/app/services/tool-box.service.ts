@@ -17,11 +17,11 @@ export default class ToolBox {
     return string.length > length;
   }
 
-  strContainsNum(string: string) : boolean {
+  strContainsNum(string: string): boolean {
     return /\d/.test(string);
   }
 
-  strContainsUppercase(string: string) : boolean {
+  strContainsUppercase(string: string): boolean {
     return string !== string.toLowerCase();
   }
 }

@@ -1,15 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'return-button',
   templateUrl: './return-button.component.html',
-  styleUrls: ['./return-button.component.css']
+  styleUrls: ['./return-button.component.css'],
 })
-export class ReturnButtonComponent implements OnInit {
+export class ReturnButtonComponent {
   @Input('routerLink') routerLink: string;
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
 }

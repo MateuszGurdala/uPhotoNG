@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DatabaseOption, FileHttpData } from '../../services/interfaces';
 
 @Component({
@@ -6,7 +6,7 @@ import { DatabaseOption, FileHttpData } from '../../services/interfaces';
   templateUrl: './file-httpdata.component.html',
   styleUrls: ['./file-httpdata.component.css'],
 })
-export class FileHTTPDataComponent implements OnInit {
+export class FileHTTPDataComponent {
   @Input('file') fileData: FileHttpData;
   @Input('index') index: number;
   @Input('albums') userAlbums: DatabaseOption[];
@@ -16,10 +16,7 @@ export class FileHTTPDataComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  onDelete()
-  {
+  onDelete() {
     this.delete.emit(this.index);
   }
 }
