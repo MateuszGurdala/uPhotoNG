@@ -17,11 +17,15 @@ import AppPageBase from '../../app-page-base';
   templateUrl: './photo-upload-page.component.html',
   styleUrls: ['./photo-upload-page.component.css'],
 })
-export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
+export class PhotoUploadPageComponent extends AppPageBase {
   @ViewChild('dropzone') dropZone: ElementRef;
   @ViewChildren('fileHttpDataElement') elements: FileHTTPDataComponent[];
   ifContainerEmpty: boolean = true;
   filesHTTPData: FileHttpData[] = [] as FileHttpData[];
+
+  selectedAlbum: string;
+  selectedPlace: string;
+  selectedTags: string;
 
   userAlbums: DatabaseOption[] = [
     { id: '1337', value: 'OtherPhotos' },
@@ -36,9 +40,10 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
   ) {
     super();
     this.setTitle('Upload photos');
+    this.selectedAlbum = this.userAlbums[0].id;
+    this.selectedPlace = this.userPlaces[0].id;
+    this.selectedTags = "#none";
   }
-
-  ngOnInit(): void {}
 
   onDragEnter(event: DragEvent) {
     event.preventDefault();
@@ -100,6 +105,9 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
       this.ifContainerEmpty = false;
       [...files].forEach(async (file) => {
         let data = await this.fileHandler.getHTTPFile(file);
+        data.album = this.selectedAlbum;
+        data.place = this.selectedPlace;
+        data.tags = this.selectedTags;
         this.filesHTTPData.push(data);
       });
     }
@@ -110,6 +118,25 @@ export class PhotoUploadPageComponent extends AppPageBase implements OnInit {
     if (this.filesHTTPData.length === 0) {
       this.ifContainerEmpty = true;
     }
+  }
+
+  setAlbumForAll(data: string) {
+    this.filesHTTPData.forEach(fileData => {
+      fileData.album = data;
+    });
+  }
+
+  setPlaceForAll(data: string) {
+    this.filesHTTPData.forEach(fileData => {
+      fileData.place = data;
+    });
+  }
+
+  setTagsForAll(data: string)
+  {
+    this.filesHTTPData.forEach(fileData => {
+      fileData.tags = data;
+    });
   }
 
   upload() {

@@ -66,3 +66,27 @@
     row-gap: 1vh;
     padding-top: 1%;
 }
+
+.upload-settings-div {
+    display: grid;
+    grid-template-columns: 5% 20% 5% 20% 5% 20% 15%;
+    align-items: center;
+}
+
+.upload-settings-btn {
+    color: var(--text-gray);
+    font-size: min(5vh, 5vw * var(--ratio));
+    background-image: var(--main-gradient);
+    box-shadow: var(--box-shadow);
+    padding: 0.4vh 1vw;
+    border-radius: min(2vh, 2vw * var(--ratio));
+    cursor: pointer;
+}
+
+.upload-settings-btn:hover {
+    color: var(--accent-tint);
+}
+
+.upload-settings-btn:active {
+    color: var(--accent-shade);
+}

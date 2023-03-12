@@ -6,16 +6,11 @@ import { Title } from '@angular/platform-browser';
   template: '',
   styles: [],
 })
-export default class AppPageBase implements OnInit {
+export default class AppPageBase {
   private titleService: Title;
   constructor() {
     this.titleService = inject<Title>(Title);
   }
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
   setTitle(title: string) {
     this.titleService.setTitle(title);
   }
