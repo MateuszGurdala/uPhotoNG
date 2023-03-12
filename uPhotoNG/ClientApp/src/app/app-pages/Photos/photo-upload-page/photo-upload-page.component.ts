@@ -42,7 +42,7 @@ export class PhotoUploadPageComponent extends AppPageBase {
     this.setTitle('Upload photos');
     this.selectedAlbum = this.userAlbums[0].id;
     this.selectedPlace = this.userPlaces[0].id;
-    this.selectedTags = "#none";
+    this.selectedTags = '#none';
   }
 
   onDragEnter(event: DragEvent) {
@@ -121,20 +121,19 @@ export class PhotoUploadPageComponent extends AppPageBase {
   }
 
   setAlbumForAll(data: string) {
-    this.filesHTTPData.forEach(fileData => {
+    this.filesHTTPData.forEach((fileData) => {
       fileData.album = data;
     });
   }
 
   setPlaceForAll(data: string) {
-    this.filesHTTPData.forEach(fileData => {
+    this.filesHTTPData.forEach((fileData) => {
       fileData.place = data;
     });
   }
 
-  setTagsForAll(data: string)
-  {
-    this.filesHTTPData.forEach(fileData => {
+  setTagsForAll(data: string) {
+    this.filesHTTPData.forEach((fileData) => {
       fileData.tags = data;
     });
   }

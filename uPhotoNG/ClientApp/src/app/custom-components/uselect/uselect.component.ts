@@ -1,11 +1,9 @@
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   Renderer2,
   ViewChild,
