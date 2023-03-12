@@ -23,6 +23,7 @@ select {
     border-width: 0 0 0.2rem 0.2rem;
     padding: 0 0 0.4rem 0.4rem;
     color: var(--text-gray);
+    cursor: pointer;
 }
 
 select:focus {

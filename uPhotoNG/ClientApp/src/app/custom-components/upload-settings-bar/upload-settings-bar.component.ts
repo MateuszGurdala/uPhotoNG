@@ -65,27 +65,28 @@ export class UploadSettingsBarComponent {
   }
 
   onClick() {
-    let time: number = 200;
+    let showTime: number = 150;
+    let hideTime: number = 200;
     if (this.isExtended) {
       setTimeout(() => {
         this.showTagsInput = false;
-      }, time / 3);
+      }, hideTime / 3);
       setTimeout(() => {
         this.showPlaceInput = false;
-      }, (time / 3) * 2);
+      }, (hideTime / 3) * 2);
       setTimeout(() => {
         this.showAlbumInput = false;
-      }, time);
+      }, hideTime);
     } else {
       setTimeout(() => {
         this.showAlbumInput = true;
-      }, time / 3);
+      }, showTime / 3);
       setTimeout(() => {
         this.showPlaceInput = true;
-      }, (time / 3) * 2);
+      }, (showTime / 3) * 2);
       setTimeout(() => {
         this.showTagsInput = true;
-      }, time);
+      }, showTime);
     }
     this.isExtended = !this.isExtended;
   }
