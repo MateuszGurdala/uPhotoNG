@@ -32,11 +32,9 @@ export class USelectComponent implements AfterViewInit {
   valueChanged() {
     this.value = this.selectEl.nativeElement.value;
     this.valueChange.emit(this.value);
-    console.log(this.selectEl.nativeElement.selectedIndex);
   }
 
-  constructor(private renderer: Renderer2) {
-  }
+  constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
     this.renderer.setStyle(
@@ -59,7 +57,5 @@ export class USelectComponent implements AfterViewInit {
       'margin-top',
       (this.inputSize[0] as unknown as number) / 4 + 'vh'
     );
-    this.value = this.data[0].id;
-    this.valueChange.emit(this.value);
   }
 }
