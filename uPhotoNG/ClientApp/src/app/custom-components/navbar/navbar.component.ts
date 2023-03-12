@@ -17,7 +17,13 @@ export class NavbarComponent implements OnInit {
     this.isExtended = !this.isExtended;
   }
 
+  retract()
+  {
+    this.isExtended = false;
+  }
+
   showModal() {
+    this.retract();
     this.modal.showModal();
   }
 }

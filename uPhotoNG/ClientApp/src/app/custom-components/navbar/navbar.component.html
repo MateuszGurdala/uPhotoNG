@@ -4,24 +4,24 @@
         <li>
             <div class="icon-break"></div>
         </li>
-        <li><a colorReact class="navbar-route" routerLink="/App/Homepage">
+        <li><a colorReact class="navbar-route" routerLink="/App/Homepage" (click)="retract()">
                 <ion-icon name="home-outline" class="navbar-icon"></ion-icon>
                 <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Home page</h3>
             </a></li>
-        <li><a colorReact class="navbar-route" routerLink="/App/Photos">
+        <li><a colorReact class="navbar-route" routerLink="/App/Photos" (click)="retract()">
                 <ion-icon name="images-outline" class="navbar-icon"></ion-icon>
                 <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Photos</h3>
             </a></li>
-        <li><a colorReact class="navbar-route" routerLink="/App/Albums">
+        <li><a colorReact class="navbar-route" routerLink="/App/Albums" (click)="retract()">
                 <ion-icon name="folder-outline" class="navbar-icon"></ion-icon>
                 <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Albums</h3>
             </a></li>
-        <li><a colorReact class="navbar-route" routerLink="/App/Places">
+        <li><a colorReact class="navbar-route" routerLink="/App/Places" (click)="retract()">
                 <ion-icon name="earth-outline" class="navbar-icon"></ion-icon>
                 <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Map</h3>
             </a></li>
         <li><a colorReact class="navbar-route">
-                <ion-icon name="cloud-outline" class="navbar-icon"></ion-icon>
+                <ion-icon name="cloud-outline" class="navbar-icon" (click)="retract()"></ion-icon>
                 <h3 class="navbar-text" [ngClass]="{'text-extended': isExtended}">Shared</h3>
             </a></li>
         <li><a colorReact class="navbar-route" (click)="showModal()">
