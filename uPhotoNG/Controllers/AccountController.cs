@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using uPhotoNG.Database;
-using uPhotoNG.Models;
+using uPhotoNG.Models.Entities;
 
 namespace uPhotoNG.Controllers
 {

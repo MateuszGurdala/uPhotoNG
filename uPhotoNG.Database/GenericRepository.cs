@@ -8,16 +8,18 @@ namespace uPhotoNG.Database
         internal ApplicationDbContext context;
         internal DbSet<TEntity> dbSet;
 
+
         public GenericRepository(ApplicationDbContext context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();
         }
 
+
         public virtual IEnumerable<TEntity> Get(
-            Expression<Func<TEntity, bool>> filter = null,
+            Expression<Func<TEntity, bool>>? filter = null,
             Func<IQueryable<TEntity>,
-            IOrderedQueryable<TEntity>> orderBy = null,
+            IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "")
         {
             IQueryable<TEntity> query = dbSet;
@@ -42,25 +44,15 @@ namespace uPhotoNG.Database
                 return query.ToList();
             }
         }
+
         public virtual TEntity? GetSingle(Expression<Func<TEntity, bool>> filter)
         {
             return dbSet.FirstOrDefault(filter);
         }
 
-        public virtual TEntity? Get(Guid guid)
-        {
-            return dbSet.Find(guid);
-        }
-
         public virtual void Insert(TEntity entity)
         {
             dbSet.Add(entity);
-        }
-
-        public virtual void Delete(Guid guid)
-        {
-            TEntity entityToDelete = dbSet.Find(guid);
-            Delete(entityToDelete);
         }
 
         public virtual void Delete(TEntity entityToDelete)
