@@ -1,7 +1,7 @@
 .upload-settings-div {
     height: 100%;
     display: grid;
-    grid-template-columns: 10% 20% 20% 35%;
+    grid-template-columns: 10% 25% 25% 35%;
 }
 
 .upload-settings-btn {
@@ -30,11 +30,11 @@
 
 .active {
     color: var(--accent);
-    left: 40vw;
+    left: 43vw;
 }
 
 .div-center {
-    width: 90%;
+    width: 85%;
     height: fit-content;
     margin: auto 0;
 }
