@@ -40,7 +40,21 @@ namespace uPhotoNG.Models.Entities
             Description = description;
         }
 
-        public void SetAsSystemAlbum()
+        public static Album CreateDefaultAlbum(User owner)
+        {
+            var defaultAlbum = new Album("OtherPhotos", null);
+            defaultAlbum.SetOwner(owner);
+            defaultAlbum.SetAsSystemAlbum();
+
+            return defaultAlbum;
+        }
+
+        public void SetOwner(User owner)
+        {
+            OwnerId = owner.Id;
+        }
+
+        private void SetAsSystemAlbum()
         {
             IsSystemAlbum = true;
         }

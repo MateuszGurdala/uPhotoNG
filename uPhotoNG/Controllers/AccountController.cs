@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using uPhotoNG.Database;
 using uPhotoNG.Models.Entities;
+using uPhotoNG.Models.Intersections;
 
 namespace uPhotoNG.Controllers
 {
@@ -76,7 +77,21 @@ namespace uPhotoNG.Controllers
             try
             {
                 var user = new User(login, hash, email);
+
+                var defaultAlbum = Album.CreateDefaultAlbum(user);
+                var defaultPlace = Place.CreateDefaultPlace(user);
+
+                var userAlbum = new UserAlbum(user, defaultAlbum);
+                var userPlace = new UserPlace(user, defaultPlace);
+
+
                 _unitOfWork.UserRepository.Insert(user);
+                _unitOfWork.AlbumRepository.Insert(defaultAlbum);
+                _unitOfWork.PlaceRepository.Insert(defaultPlace);
+
+                _unitOfWork.UserAlbumRepository.Insert(userAlbum);
+                _unitOfWork.UserPlaceRepository.Insert(userPlace);
+
                 _unitOfWork.Save();
 
                 HttpContext.Response.StatusCode = 200;
