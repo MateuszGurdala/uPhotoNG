@@ -43,7 +43,6 @@ export class SignUpPageComponent {
     console.log('Processing request...');
 
     this.validateData().then(() => {
-      console.log(this.cond);
       if (Object.values(this.cond).includes(false)) {
         this.toastr.error('Please enter correct values');
         this.isProcessing = false;

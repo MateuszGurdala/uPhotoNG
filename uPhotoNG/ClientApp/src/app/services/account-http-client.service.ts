@@ -31,7 +31,11 @@ export class AccountHttpClientService {
 
   createUserAccount(userData: RegisterData): Observable<boolean> {
     return this.httpClient
-      .put<boolean>(this.baseURL + 'Account/CreateAccount', userData)
+      .put<boolean>(this.baseURL + 'Account/CreateAccount', userData, {
+        headers : {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+      })
       .pipe(catchError(() => of(false)));
   }
 
@@ -70,7 +74,7 @@ export class AccountHttpClientService {
         this.lastAuthenticated = new Date();
       });
     }
-    return of(true);
+    // return of(true);
     return of(this.isAuthenticated);
   }
 
