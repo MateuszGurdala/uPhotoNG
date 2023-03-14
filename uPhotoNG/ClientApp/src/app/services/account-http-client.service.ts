@@ -7,7 +7,7 @@ import { RegisterData } from './interfaces';
   providedIn: 'root',
 })
 export class AccountHttpClientService {
-  baseURL: string = 'https://localhost:7174/';
+  private baseURL: string = 'https://localhost:7174/';
   isAuthenticated: boolean = false;
   lastAuthenticated: Date;
 
