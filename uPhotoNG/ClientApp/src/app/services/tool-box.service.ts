@@ -24,4 +24,11 @@ export default class ToolBox {
   strContainsUppercase(string: string): boolean {
     return string !== string.toLowerCase();
   }
+
+  extractGuid(string: string)
+  {
+    let length = string.length;
+
+    return string.substring(length - 36, length);
+  }
 }
