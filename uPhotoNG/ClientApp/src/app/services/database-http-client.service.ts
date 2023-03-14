@@ -43,4 +43,30 @@ export default class DatabaseHttpClient {
       })
       .pipe(catchError(() => of(false)));
   }
+
+  putPlaceTest(placeName: string): Observable<boolean> {
+    return this.httpClient
+      .put<boolean>(
+        this.baseURL + 'Place/PutPlaceTest',
+        {
+          placeName: placeName,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+        }
+      )
+      .pipe(catchError(() => of(false)));
+  }
+
+  deletePlaceTest(placeId: string): Observable<boolean> {
+    return this.httpClient
+      .delete<boolean>(this.baseURL + 'Place/DeletePlaceTest', {
+        withCredentials: true,
+        params: new HttpParams().set('id', this.toolBox.extractGuid(placeId)),
+      })
+      .pipe(catchError(() => of(false)));
+  }
 }

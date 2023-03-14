@@ -57,18 +57,14 @@ export class AlbumsPageComponent extends AppPageBase {
   }
 
   deleteAlbum() {
-    console.log(this.deleteAlbumId);
     this.databaseHttpClient
       .deleteAlbumTest(this.deleteAlbumId)
       .subscribe((next) => {
-        if(next)
-        {
+        if (next) {
           this.toastr.success('Album has been removed.');
           this.loadUserAlbums();
-        }
-        else
-        {
-          this.toastr.error('Server error or album could not be', 'Failed');
+        } else {
+          this.toastr.error('Server error or album could not be removed', 'Failed');
         }
       });
   }

@@ -1,1 +1,15 @@
-<p>places-page works!</p>
+<div class="return-btn-div">
+    <return-button routerLink="/App/Homepage"></return-button>
+</div>
+<div class="container">
+    <form (ngSubmit)="addPlace()">
+        <u-input text="New place name" input-type="text" label-size="2.6vh" input-size="3vh"
+            [(value)]="newPlaceName"></u-input>
+        <button backgroundReact type="submit">Add</button>
+    </form>
+    <form (ngSubmit)="deletePlace()">
+        <u-select text="Delete place" label-size="2.6vh" input-size="3vh" [data]="userPlaces"
+            [(value)]="deletePlaceId"></u-select>
+        <button backgroundReact type="submit">Delete</button>
+    </form>
+</div>

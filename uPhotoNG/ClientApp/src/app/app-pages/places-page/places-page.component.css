@@ -1,0 +1,35 @@
+.return-btn-div {
+    height: 15%;
+    display: grid;
+    grid-template-columns: 10%;
+}
+
+.container {
+    width: 70%;
+    height: 85%;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 4vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10%;
+    gap: 3vh;
+}
+
+button {
+    font-size: 4vh;
+    font-weight: 700;
+    padding: 1vh 1.6vw;
+    border-radius: 2.6vh;
+}
