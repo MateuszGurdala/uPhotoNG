@@ -57,7 +57,8 @@ namespace uPhotoNG.Controllers
             string confirmation = reqBody.confirmation;
             string email = reqBody.email;
 
-            if (login == null || _unitOfWork.UserRepository.GetSingle(e => e.Login == login) != null)
+            if (login == null || _unitOfWork.UserRepository
+                .GetSingle(e => e.Login == login) != null)
             {
                 return StatusCode(400);
             }
@@ -79,14 +80,18 @@ namespace uPhotoNG.Controllers
                 var user = new User(login, hash, email);
 
                 var defaultAlbum = Album.CreateDefaultAlbum(user);
+                var deletedPhotosAlbum = Album.CreateDeletedPhotosAlbum(user);
+
                 var defaultPlace = Place.CreateDefaultPlace(user);
 
                 var userAlbum = new UserAlbum(user, defaultAlbum);
+                //var userDeletedAblum= new UserAlbum(user, deletedPhotosAlbum); User should not have access to this album through normal ways
                 var userPlace = new UserPlace(user, defaultPlace);
 
 
                 _unitOfWork.UserRepository.Insert(user);
                 _unitOfWork.AlbumRepository.Insert(defaultAlbum);
+                _unitOfWork.AlbumRepository.Insert(deletedPhotosAlbum);
                 _unitOfWork.PlaceRepository.Insert(defaultPlace);
 
                 _unitOfWork.UserAlbumRepository.Insert(userAlbum);
