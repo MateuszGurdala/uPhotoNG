@@ -1,15 +1,15 @@
 <div class="component">
     <div class="options-div">
         <return-button routerLink="/App/Photos"></return-button>
-        <upload-settings-bar [albumsData]="userAlbums" [placesData]="userPlaces"
-            [selectedValues]="selectedValues"
+        <upload-settings-bar [albumsData]="userAlbums" [placesData]="userPlaces" [selectedValues]="selectedValues"
             (setValue)="setValueHandler($event)"></upload-settings-bar>
         <div class="upload-btn-div">
             <ion-icon backgroundReact name="cloud-upload-outline" class="upload-btn" (click)="upload()"></ion-icon>
         </div>
     </div>
-    <div #dropzone class="drop-container empty" (dragenter)="onDragEnter($event)" (dragover)="onDragOver($event)"
-        (dragleave)="onDragLeave($event)" (drop)="onDrop($event)" (click)="onClick()"
+    <div #dropzone *ngIf="areAlbumsLoaded && arePlacesLoaded" class="drop-container empty"
+        (dragenter)="onDragEnter($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)" (click)="onClick()"
         [ngClass]="{'empty': ifContainerEmpty, 'photo-container': !ifContainerEmpty}">
         <div *ngIf="ifContainerEmpty" class="drop-info-div">
             <h3 class="drop-text">Drop images or click to select files to upload</h3>
@@ -18,4 +18,5 @@
         <file-httpdata #fileHttpDataElement *ngFor="let file of filesHTTPData; index as i" [file]="file" [index]="i"
             [albums]="userAlbums" [places]="userPlaces" (delete)="deleteElement($event)"></file-httpdata>
     </div>
+    <spinner *ngIf="!areAlbumsLoaded || !arePlacesLoaded" width="1vh" size="30vh" xOffset="22vw" yOffset="14vh"></spinner>
 </div>

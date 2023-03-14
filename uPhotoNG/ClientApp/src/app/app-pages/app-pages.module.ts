@@ -19,6 +19,7 @@ import { PlacesPageComponent } from './places-page/places-page.component';
 import { AccountHttpClientService } from '../services/account-http-client.service';
 import FileHandler from '../services/file-handler.service';
 import ModalService from '../services/modal-service.service';
+import DatabaseHttpClient from '../services/database-http-client.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import ModalService from '../services/modal-service.service';
     ModalService,
     ToastrService,
     FileHandler,
+    DatabaseHttpClient
   ],
 })
 export class AppPagesModule {}

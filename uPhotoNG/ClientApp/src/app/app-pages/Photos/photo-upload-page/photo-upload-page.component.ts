@@ -6,8 +6,9 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { FileHTTPDataComponent } from 'src/app/custom-components/file-httpdata/file-httpdata.component';
-import { DatabaseOption, FileHttpData } from 'src/app/services/interfaces';
+import { FileHTTPDataComponent } from '../../../custom-components/file-httpdata/file-httpdata.component';
+import { DatabaseOption, FileHttpData } from '../../../services/interfaces';
+import DatabaseHttpClient from '../../../services/database-http-client.service';
 import FileHandler from '../../../services/file-handler.service';
 import { SelectedValues, SetValue } from '../../../services/interfaces';
 import AppPageBase from '../../app-page-base';
@@ -24,22 +25,50 @@ export class PhotoUploadPageComponent extends AppPageBase {
   ifContainerEmpty: boolean = true;
   filesHTTPData: FileHttpData[] = [] as FileHttpData[];
   selectedValues: SelectedValues = {} as SelectedValues;
-  userAlbums: DatabaseOption[] = [
-    { id: '1337', value: 'OtherPhotos' },
-    { id: '2137', value: 'AnotherAlbum' },
-  ];
-  userPlaces: DatabaseOption[] = [{ id: '1xd2', value: 'NoPlace' }];
+
+  userAlbums: DatabaseOption[] = [];
+  userPlaces: DatabaseOption[] = [];
+  areAlbumsLoaded: boolean = false;
+  arePlacesLoaded: boolean = false;
 
   constructor(
     private renderer: Renderer2,
     private toastr: ToastrService,
-    private fileHandler: FileHandler
+    private fileHandler: FileHandler,
+    private databaseHttpClient: DatabaseHttpClient
   ) {
     super();
     this.setTitle('Upload photos');
-    this.selectedValues.album = this.userAlbums[0].id;
-    this.selectedValues.place = this.userPlaces[0].id;
+
+    this.loadAlbumPlaceOptions();
+
     this.selectedValues.tags = '#none';
+  }
+
+  loadAlbumPlaceOptions() {
+    this.databaseHttpClient
+      .getDatabaseOption('Album/GetUserAlbums')
+      .subscribe((next) => {
+        if (next) {
+          this.userAlbums = next as DatabaseOption[];
+          this.selectedValues.album = this.userAlbums[0].id;
+          this.areAlbumsLoaded = true;
+        } else {
+          this.toastr.error('Albums could not be loaded.');
+        }
+      });
+
+    this.databaseHttpClient
+      .getDatabaseOption('Place/GetUserPlaces')
+      .subscribe((next) => {
+        if (next) {
+          this.userPlaces = next as DatabaseOption[];
+          this.selectedValues.place = this.userPlaces[0].id;
+          this.arePlacesLoaded = true;
+        } else {
+          this.toastr.error('Places could not be loaded.');
+        }
+      });
   }
 
   onDragEnter(event: DragEvent) {
