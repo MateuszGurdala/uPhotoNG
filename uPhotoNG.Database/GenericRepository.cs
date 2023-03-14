@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace uPhotoNG.Database
 {
@@ -68,6 +69,14 @@ namespace uPhotoNG.Database
         {
             dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
+        }
+
+        public virtual IEnumerable<(TEntity, JEntity)> Join<JEntity>(IEnumerable<TEntity> query, Func<TEntity, IComparable> getParam1, Func<JEntity, IComparable> getParam2) where JEntity : class
+        {
+            return (from TEntity entity in query
+                    join JEntity jentity in context.Set<JEntity>()
+                         on getParam1(entity) equals getParam2(jentity)
+                    select (entity, jentity));
         }
     }
 }
