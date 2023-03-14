@@ -12,6 +12,7 @@ namespace uPhotoNG.Controllers
     {
         public AlbumController(UnitOfWork unitOfWork) : base(unitOfWork) { }
 
+        #region READ
         [HttpGet]
         public async Task<IActionResult> GetUserAlbums()
         {
@@ -25,7 +26,9 @@ namespace uPhotoNG.Controllers
                 return StatusCode(400);
             }
         }
+        #endregion
 
+        #region CREATE
         [HttpPut]
         public async Task<IActionResult> PutAlbumTest()
         {
@@ -69,7 +72,9 @@ namespace uPhotoNG.Controllers
                 return StatusCode(400);
             }
         }
+        #endregion
 
+        #region DELETE
         [HttpDelete]
         public async Task<IActionResult> DeleteAlbumTest(string id)
         {
@@ -77,12 +82,15 @@ namespace uPhotoNG.Controllers
             {
                 await CheckIfAuthenticatedAsync();
                 var userId = GetSessionUserId();
-                var albumId = Guid.Parse(id);
 
+                var albumId = Guid.Parse(id);
                 var album = _unitOfWork.AlbumRepository.GetSingle(e => e.Id == albumId && e.OwnerId == userId);
 
-                if (album != null && !album.IsSystemAlbum) 
-                { 
+                if (album != null && !album.IsSystemAlbum)
+                {
+                    //Move photos to user corresponding DeletedPhotos album
+                    MovePhotosToDeleteAlbum(albumId);
+
                     _unitOfWork.AlbumRepository.Delete(album);
                     _unitOfWork.Save();
 
@@ -93,10 +101,52 @@ namespace uPhotoNG.Controllers
                     return Json(false);
                 }
             }
+            catch (DeletedPhotosSystemAlbumNotFound)
+            {
+                return StatusCode(500);
+            }
             catch (Exception)
             {
                 return StatusCode(400);
             }
         }
+
+        private void MovePhotosToDeleteAlbum(Guid deltedAlbumId)
+        {
+            var deletedAlbumPhotos = _unitOfWork.PhotoRepository.Get(e => e.Id == deltedAlbumId);
+            var deletedPhotosAlbums = new List<Album>();
+
+            foreach (var deletedPhoto in deletedAlbumPhotos)
+            {
+                var targetAlbum = deletedPhotosAlbums.FirstOrDefault(e => e.OwnerId == deletedPhoto.OwnerId);
+
+                //Add user target album if not in list
+                if (targetAlbum == null)
+                {
+                    var deletedAlbum = _unitOfWork.AlbumRepository.GetSingle(e => IsDeletedPhotosAlbum(e, deletedPhoto.OwnerId));
+                    if (deletedAlbum == null)
+                    {
+                        throw new DeletedPhotosSystemAlbumNotFound();
+                    }
+                    deletedPhotosAlbums.Add(deletedAlbum);
+                    targetAlbum = deletedAlbum;
+                }
+
+                deletedPhoto.AlbumId = targetAlbum.Id;
+                _unitOfWork.PhotoRepository.Update(deletedPhoto);
+            }
+        }
+
+        private bool IsDeletedPhotosAlbum(Album e, Guid ownerId)
+        {
+            return (e.IsSystemAlbum && e.Name == "DeletedPhotos" && e.OwnerId == ownerId);
+        }
+        #endregion
     }
+    #region Errors
+    internal class DeletedPhotosSystemAlbumNotFound : Exception
+    {
+        public DeletedPhotosSystemAlbumNotFound() { }
+    }
+    #endregion
 }
