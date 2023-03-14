@@ -20,6 +20,7 @@ import { AccountHttpClientService } from '../services/account-http-client.servic
 import FileHandler from '../services/file-handler.service';
 import ModalService from '../services/modal-service.service';
 import DatabaseHttpClient from '../services/database-http-client.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import DatabaseHttpClient from '../services/database-http-client.service';
     IonicModule,
     CustomDirectivesModule,
     ToastrModule,
+    FormsModule
   ],
   exports: [
     LayoutComponent,
@@ -51,7 +53,7 @@ import DatabaseHttpClient from '../services/database-http-client.service';
     ModalService,
     ToastrService,
     FileHandler,
-    DatabaseHttpClient
+    DatabaseHttpClient,
   ],
 })
 export class AppPagesModule {}

@@ -1,1 +1,15 @@
-<p>albums-page works!</p>
+<div class="return-btn-div">
+    <return-button routerLink="/App/Homepage"></return-button>
+</div>
+<div class="container">
+    <form (ngSubmit)="addAlbum()">
+        <u-input text="New album name" input-type="text" label-size="2.6vh" input-size="3vh"
+            [(value)]="newAlbumName"></u-input>
+        <button backgroundReact type="submit">Add</button>
+    </form>
+    <form (ngSubmit)="deleteAlbum()">
+        <u-select text="Delete album" label-size="2.6vh" input-size="3vh" [data]="userAlbums"
+            [(value)]="deleteAlbumId"></u-select>
+        <button backgroundReact type="submit">Delete</button>
+    </form>
+</div>
