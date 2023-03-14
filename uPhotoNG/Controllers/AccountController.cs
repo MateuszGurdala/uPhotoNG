@@ -145,7 +145,7 @@ namespace uPhotoNG.Controllers
         {
             try
             {
-                await CheckIfAuthenticated();
+                await CheckIfAuthenticatedAsync();
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
                 return Json(true);
@@ -161,7 +161,7 @@ namespace uPhotoNG.Controllers
         {
             try
             {
-                await CheckIfAuthenticated();
+                await CheckIfAuthenticatedAsync();
                 return Json(true);
             }
             catch (Exception)
