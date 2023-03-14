@@ -51,6 +51,14 @@ namespace uPhotoNG.Models.Entities
 
             return defaultAlbum;
         }
+        public static Album CreateDeletedPhotosAlbum(User owner)
+        {
+            var deletedPhotosAlbum = new Album("DeletedPhotos", "Contains all deleted photos and photos transfered from deleted albums.");
+            deletedPhotosAlbum.SetOwner(owner);
+            deletedPhotosAlbum.SetAsSystemAlbum();
+
+            return deletedPhotosAlbum;
+        }
         private void SetAsSystemAlbum()
         {
             IsSystemAlbum = true;
