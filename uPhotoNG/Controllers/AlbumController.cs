@@ -84,7 +84,7 @@ namespace uPhotoNG.Controllers
                 var userId = GetSessionUserId();
 
                 var albumId = Guid.Parse(id);
-                var album = _unitOfWork.AlbumRepository.GetSingle(e => e.Id == albumId && e.OwnerId == userId);
+                var album = _unitOfWork.AlbumRepository.GetSingle(e => e.Id == albumId);
 
                 if (album != null && !album.IsSystemAlbum)
                 {
@@ -113,7 +113,7 @@ namespace uPhotoNG.Controllers
 
         private void MovePhotosToDeleteAlbum(Guid deltedAlbumId)
         {
-            var deletedAlbumPhotos = _unitOfWork.PhotoRepository.Get(e => e.Id == deltedAlbumId);
+            var deletedAlbumPhotos = _unitOfWork.PhotoRepository.Get(e => e.AlbumId == deltedAlbumId);
             var deletedPhotosAlbums = new List<Album>();
 
             foreach (var deletedPhoto in deletedAlbumPhotos)
