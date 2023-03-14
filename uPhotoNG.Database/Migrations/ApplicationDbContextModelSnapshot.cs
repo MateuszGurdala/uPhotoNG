@@ -66,6 +66,9 @@ namespace uPhotoNG.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid?>("AlbumId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<byte[]>("Data")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
@@ -91,6 +94,9 @@ namespace uPhotoNG.Database.Migrations
                         .IsRequired()
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid?>("PlaceId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Size")
                         .HasColumnType("int");
 
@@ -100,9 +106,13 @@ namespace uPhotoNG.Database.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AlbumId");
+
                     b.HasIndex("Id");
 
                     b.HasIndex("OwnerId");
+
+                    b.HasIndex("PlaceId");
 
                     b.HasIndex("FileName", "OwnerId")
                         .IsUnique();
@@ -271,11 +281,23 @@ namespace uPhotoNG.Database.Migrations
 
             modelBuilder.Entity("uPhotoNG.Models.Entities.Photo", b =>
                 {
+                    b.HasOne("uPhotoNG.Models.Entities.Album", "Album")
+                        .WithMany()
+                        .HasForeignKey("AlbumId");
+
                     b.HasOne("uPhotoNG.Models.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("uPhotoNG.Models.Entities.Place", "Place")
+                        .WithMany()
+                        .HasForeignKey("PlaceId");
+
+                    b.Navigation("Album");
+
+                    b.Navigation("Place");
 
                     b.Navigation("User");
                 });

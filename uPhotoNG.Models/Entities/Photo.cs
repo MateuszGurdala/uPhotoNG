@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using uPhotoNG.Models.Structs;
-using uPhotoNG.Models.Intersections;
 
 namespace uPhotoNG.Models.Entities
 {
@@ -11,11 +10,21 @@ namespace uPhotoNG.Models.Entities
         [Column(TypeName = "char(36)")]
         public Guid Id { get; set; }
 
+        #region ForeignKeys
         [Required]
         [ForeignKey("User")]
         public Guid OwnerId { get; set; }
         public User? User { get; set; }
 
+        [ForeignKey("Album")]
+        public Guid? AlbumId { get; set; }
+        public Album? Album { get; set; }
+
+        [ForeignKey("Place")]
+        public Guid? PlaceId { get; set; }
+        public Place? Place { get; set; }
+        #endregion
+        #region Required
         [Required]
         public string FileName { get; set; }
 
@@ -40,6 +49,8 @@ namespace uPhotoNG.Models.Entities
 
         [Required]
         public DateTime DateUploaded { get; set; }
+        #endregion
+
 
 
         public Photo(string title, bool isFavorite, string fileName, string mimeType, byte[] data, int size, DateTime dateTaken)

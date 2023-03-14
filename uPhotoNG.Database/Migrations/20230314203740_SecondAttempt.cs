@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace uPhotoNG.Database.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class SecondAttempt : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -64,38 +64,13 @@ namespace uPhotoNG.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Photos",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "char(36)", nullable: false),
-                    OwnerId = table.Column<string>(type: "char(36)", nullable: false),
-                    FileName = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsFavorite = table.Column<bool>(type: "bit", nullable: false),
-                    MimeType = table.Column<string>(type: "varchar(10)", nullable: false),
-                    Size = table.Column<int>(type: "int", nullable: false),
-                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    DateTaken = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateUploaded = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Photos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Photos_Users_OwnerId",
-                        column: x => x.OwnerId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Places",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IsPublic = table.Column<bool>(type: "bit", nullable: false),
+                    IsSystemPlace = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<string>(type: "char(36)", nullable: false),
                     Latitude = table.Column<float>(type: "real", nullable: true),
                     Longitude = table.Column<float>(type: "real", nullable: true),
@@ -137,27 +112,41 @@ namespace uPhotoNG.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PhotoTags",
+                name: "Photos",
                 columns: table => new
                 {
-                    PhotoId = table.Column<string>(type: "char(36)", nullable: false),
-                    TagValue = table.Column<string>(type: "varchar(20)", nullable: false)
+                    Id = table.Column<string>(type: "char(36)", nullable: false),
+                    OwnerId = table.Column<string>(type: "char(36)", nullable: false),
+                    AlbumId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    PlaceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    FileName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsFavorite = table.Column<bool>(type: "bit", nullable: false),
+                    MimeType = table.Column<string>(type: "varchar(10)", nullable: false),
+                    Size = table.Column<int>(type: "int", nullable: false),
+                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    DateTaken = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUploaded = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PhotoTags", x => new { x.PhotoId, x.TagValue });
+                    table.PrimaryKey("PK_Photos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PhotoTags_Photos_PhotoId",
-                        column: x => x.PhotoId,
-                        principalTable: "Photos",
+                        name: "FK_Photos_Albums_AlbumId",
+                        column: x => x.AlbumId,
+                        principalTable: "Albums",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Photos_Places_PlaceId",
+                        column: x => x.PlaceId,
+                        principalTable: "Places",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Photos_Users_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PhotoTags_Tags_TagValue",
-                        column: x => x.TagValue,
-                        principalTable: "Tags",
-                        principalColumn: "Value",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -184,6 +173,30 @@ namespace uPhotoNG.Database.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PhotoTags",
+                columns: table => new
+                {
+                    PhotoId = table.Column<string>(type: "char(36)", nullable: false),
+                    TagValue = table.Column<string>(type: "varchar(20)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PhotoTags", x => new { x.PhotoId, x.TagValue });
+                    table.ForeignKey(
+                        name: "FK_PhotoTags_Photos_PhotoId",
+                        column: x => x.PhotoId,
+                        principalTable: "Photos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PhotoTags_Tags_TagValue",
+                        column: x => x.TagValue,
+                        principalTable: "Tags",
+                        principalColumn: "Value",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Albums_Id",
                 table: "Albums",
@@ -201,6 +214,11 @@ namespace uPhotoNG.Database.Migrations
                 column: "OwnerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Photos_AlbumId",
+                table: "Photos",
+                column: "AlbumId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Photos_FileName_OwnerId",
                 table: "Photos",
                 columns: new[] { "FileName", "OwnerId" },
@@ -215,6 +233,11 @@ namespace uPhotoNG.Database.Migrations
                 name: "IX_Photos_OwnerId",
                 table: "Photos",
                 column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Photos_PlaceId",
+                table: "Photos",
+                column: "PlaceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PhotoTags_PhotoId",

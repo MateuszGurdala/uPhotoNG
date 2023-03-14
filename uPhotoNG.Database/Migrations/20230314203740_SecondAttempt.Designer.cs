@@ -12,8 +12,8 @@ using uPhotoNG.Database;
 namespace uPhotoNG.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230313195509_Initial")]
-    partial class Initial
+    [Migration("20230314203740_SecondAttempt")]
+    partial class SecondAttempt
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,9 @@ namespace uPhotoNG.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid?>("AlbumId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<byte[]>("Data")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
@@ -94,6 +97,9 @@ namespace uPhotoNG.Database.Migrations
                         .IsRequired()
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid?>("PlaceId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Size")
                         .HasColumnType("int");
 
@@ -103,14 +109,60 @@ namespace uPhotoNG.Database.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AlbumId");
+
                     b.HasIndex("Id");
 
                     b.HasIndex("OwnerId");
+
+                    b.HasIndex("PlaceId");
 
                     b.HasIndex("FileName", "OwnerId")
                         .IsUnique();
 
                     b.ToTable("Photos");
+                });
+
+            modelBuilder.Entity("uPhotoNG.Models.Entities.Place", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSystemPlace")
+                        .HasColumnType("bit");
+
+                    b.Property<float?>("Latitude")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("Longitude")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedBy");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.HasIndex("Name", "CreatedBy")
+                        .IsUnique();
+
+                    b.ToTable("Places");
                 });
 
             modelBuilder.Entity("uPhotoNG.Models.Entities.Tag", b =>
@@ -219,45 +271,6 @@ namespace uPhotoNG.Database.Migrations
                     b.ToTable("UserPlaces");
                 });
 
-            modelBuilder.Entity("uPhotoNG.Models.Place", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsPublic")
-                        .HasColumnType("bit");
-
-                    b.Property<float?>("Latitude")
-                        .HasColumnType("real");
-
-                    b.Property<float?>("Longitude")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedBy");
-
-                    b.HasIndex("Id")
-                        .IsUnique();
-
-                    b.HasIndex("Name", "CreatedBy")
-                        .IsUnique();
-
-                    b.ToTable("Places");
-                });
-
             modelBuilder.Entity("uPhotoNG.Models.Entities.Album", b =>
                 {
                     b.HasOne("uPhotoNG.Models.Entities.User", "User")
@@ -271,9 +284,32 @@ namespace uPhotoNG.Database.Migrations
 
             modelBuilder.Entity("uPhotoNG.Models.Entities.Photo", b =>
                 {
+                    b.HasOne("uPhotoNG.Models.Entities.Album", "Album")
+                        .WithMany()
+                        .HasForeignKey("AlbumId");
+
                     b.HasOne("uPhotoNG.Models.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("uPhotoNG.Models.Entities.Place", "Place")
+                        .WithMany()
+                        .HasForeignKey("PlaceId");
+
+                    b.Navigation("Album");
+
+                    b.Navigation("Place");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("uPhotoNG.Models.Entities.Place", b =>
+                {
+                    b.HasOne("uPhotoNG.Models.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CreatedBy")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -320,7 +356,7 @@ namespace uPhotoNG.Database.Migrations
 
             modelBuilder.Entity("uPhotoNG.Models.Intersections.UserPlace", b =>
                 {
-                    b.HasOne("uPhotoNG.Models.Place", "Place")
+                    b.HasOne("uPhotoNG.Models.Entities.Place", "Place")
                         .WithMany()
                         .HasForeignKey("PlaceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -333,17 +369,6 @@ namespace uPhotoNG.Database.Migrations
                         .IsRequired();
 
                     b.Navigation("Place");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("uPhotoNG.Models.Place", b =>
-                {
-                    b.HasOne("uPhotoNG.Models.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("CreatedBy")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("User");
                 });
