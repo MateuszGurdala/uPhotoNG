@@ -45,11 +45,11 @@ export class USelectComponent implements AfterViewInit {
       'font-size',
       this.inputSize
     );
-    this.renderer.setStyle(
-      this.optionEl.nativeElement,
-      'font-size',
-      this.inputSize
-    );
+    // this.renderer.setStyle(
+    //   this.optionEl.nativeElement,
+    //   'font-size',
+    //   this.inputSize
+    // );
     this.renderer.setStyle(
       this.selectEl.nativeElement,
       'margin-top',
