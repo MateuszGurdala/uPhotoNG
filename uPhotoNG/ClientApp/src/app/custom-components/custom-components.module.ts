@@ -17,6 +17,7 @@ import { ReturnButtonComponent } from './return-button/return-button.component';
 import { FileHTTPDataComponent } from './file-httpdata/file-httpdata.component';
 import { USelectComponent } from './uselect/uselect.component';
 import { UploadSettingsBarComponent } from './upload-settings-bar/upload-settings-bar.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UploadSettingsBarComponent } from './upload-settings-bar/upload-setting
     FileHTTPDataComponent,
     USelectComponent,
     UploadSettingsBarComponent,
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { UploadSettingsBarComponent } from './upload-settings-bar/upload-setting
     FileHTTPDataComponent,
     USelectComponent,
     UploadSettingsBarComponent,
+    SpinnerComponent
   ],
 })
 export class CustomComponentsModule {}
