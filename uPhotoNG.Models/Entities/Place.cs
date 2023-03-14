@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using uPhotoNG.Models.Entities;
+using uPhotoNG.Models.Interfaces;
 
 namespace uPhotoNG.Models.Entities
 {
-    public class Place
+    public class Place : IDatabaseOption
     {
         [Key]
         public Guid Id { get; set; }
@@ -35,22 +35,6 @@ namespace uPhotoNG.Models.Entities
             IsPublic = isPublic;
         }
 
-        public void SetCreator(User user)
-        {
-            CreatedBy = user.Id;
-        }
-
-        private void SetAsSystemPlace()
-        {
-            IsSystemPlace = true;
-        }
-
-        public void SetCoordinates(float latitude, float longitude)
-        {
-            Latitude = latitude;
-            Longitude = longitude;
-        }
-
         public static Place CreateDefaultPlace(User user)
         {
             var defaultPlace = new Place("NoPlace", false, null);
@@ -58,6 +42,19 @@ namespace uPhotoNG.Models.Entities
             defaultPlace.SetAsSystemPlace();
 
             return defaultPlace;
+        }
+        private void SetAsSystemPlace()
+        {
+            IsSystemPlace = true;
+        }
+        public void SetCreator(User user)
+        {
+            CreatedBy = user.Id;
+        }
+        public void SetCoordinates(float latitude, float longitude)
+        {
+            Latitude = latitude;
+            Longitude = longitude;
         }
     }
 }

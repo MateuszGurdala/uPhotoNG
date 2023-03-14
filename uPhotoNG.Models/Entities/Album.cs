@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using uPhotoNG.Models.Interfaces;
 
 namespace uPhotoNG.Models.Entities
 {
-    public class Album
+    public class Album: IDatabaseOption
     {
         [Key]
         public Guid Id { get; set; }
@@ -29,6 +30,7 @@ namespace uPhotoNG.Models.Entities
 
         public string? Description { get; set; }
 
+
         public Album(string name, string? description)
         {
             Id = Guid.NewGuid();
@@ -40,6 +42,7 @@ namespace uPhotoNG.Models.Entities
             Description = description;
         }
 
+
         public static Album CreateDefaultAlbum(User owner)
         {
             var defaultAlbum = new Album("OtherPhotos", null);
@@ -48,17 +51,14 @@ namespace uPhotoNG.Models.Entities
 
             return defaultAlbum;
         }
-
-        public void SetOwner(User owner)
-        {
-            OwnerId = owner.Id;
-        }
-
         private void SetAsSystemAlbum()
         {
             IsSystemAlbum = true;
         }
-
+        public void SetOwner(User owner)
+        {
+            OwnerId = owner.Id;
+        }
         public void SetAsShared()
         {
             IsShared = true;
