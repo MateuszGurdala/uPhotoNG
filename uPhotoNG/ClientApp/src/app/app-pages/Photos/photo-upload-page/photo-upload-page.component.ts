@@ -39,9 +39,7 @@ export class PhotoUploadPageComponent extends AppPageBase {
   ) {
     super();
     this.setTitle('Upload photos');
-
     this.loadAlbumPlaceOptions();
-
     this.selectedValues.tags = '#none';
   }
 
