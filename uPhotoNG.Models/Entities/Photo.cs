@@ -39,7 +39,7 @@ namespace uPhotoNG.Models.Entities
         public string MimeType { get; set; }
 
         [Required]
-        public int Size { get; set; }
+        public long Size { get; set; }
 
         [Required]
         public byte[] Data { get; set; }
@@ -51,7 +51,9 @@ namespace uPhotoNG.Models.Entities
         public DateTime DateUploaded { get; set; }
         #endregion
 
-
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public Photo() { }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
         public Photo(string title, bool isFavorite, string fileName, string mimeType, byte[] data, int size, DateTime dateTaken)
         {
