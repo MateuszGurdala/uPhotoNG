@@ -1,7 +1,7 @@
 <div shadowReact class="container">
     <div class="fav-title-delete-div">
         <input type="checkbox" class="star" [(ngModel)]="fileData.isFavorite" />
-        <u-input text="Login" input-size="2vh" label-size="0" input-type="text" [(value)]="fileData.fileName"></u-input>
+        <u-input text="Login" input-size="2vh" label-size="0" input-type="text" [(value)]="fileData.title"></u-input>
         <ion-icon colorReact name="trash-outline" class="delete-btn" (click)="onDelete()"></ion-icon>
     </div>
     <div class="img-place-album-tags-div">

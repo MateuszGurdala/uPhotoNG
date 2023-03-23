@@ -27,6 +27,7 @@ export default class FileHandler {
         fileData.base64 = this._arrayBufferToBase64(event.target.result);
         fileData.MIMEType = file.type as 'image/jpeg' | 'image/png';
         fileData.fileName = file.name;
+        fileData.title = file.name;
         fileData.size = file.size;
         fileData.date = file.lastModified;
         fileData.isFavorite = false;
