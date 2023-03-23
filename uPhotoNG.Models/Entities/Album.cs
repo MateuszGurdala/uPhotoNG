@@ -71,5 +71,9 @@ namespace uPhotoNG.Models.Entities
         {
             IsShared = true;
         }
+        public void IncrementPhotoCount()
+        {
+            PhotoCount++;
+        }
     }
 }

@@ -153,5 +153,11 @@ export class PhotoUploadPageComponent extends AppPageBase {
 
   upload() {
     console.log(this.filesHTTPData);
+
+    this.filesHTTPData.forEach((file) => {
+      this.databaseHttpClient.putPhoto(file).subscribe(result => {
+        console.log(result);
+      })
+    });
   }
 }

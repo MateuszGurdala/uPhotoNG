@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
-import { DatabaseOption } from './interfaces';
+import { DatabaseOption, FileHttpData } from './interfaces';
 import ToolBox from './tool-box.service';
 
 @Injectable()
@@ -66,6 +66,17 @@ export default class DatabaseHttpClient {
       .delete<boolean>(this.baseURL + 'Place/DeletePlaceTest', {
         withCredentials: true,
         params: new HttpParams().set('id', this.toolBox.extractGuid(placeId)),
+      })
+      .pipe(catchError(() => of(false)));
+  }
+
+  putPhoto(fileData: FileHttpData): Observable<boolean> {
+    return this.httpClient
+      .put<any>(this.baseURL + 'File/UploadPhoto', fileData, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
       })
       .pipe(catchError(() => of(false)));
   }

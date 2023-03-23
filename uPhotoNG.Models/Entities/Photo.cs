@@ -82,5 +82,20 @@ namespace uPhotoNG.Models.Entities
             Data = imageData.Data;
             DateTaken = imageData.DateTaken;
         }
+
+        public void SetOwner(Guid userId)
+        {
+            OwnerId = userId;
+        }
+
+        public void SetPlace(Guid placeId) 
+        {
+            PlaceId = placeId;
+        }
+
+        public void SetAlbum(Guid albumId) 
+        {
+            AlbumId = albumId;
+        }
     }
 }
